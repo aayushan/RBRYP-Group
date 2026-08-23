@@ -1,13 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="assets/logos/logo.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ram Bhanwan Ram Yamuna Prasad Group | Building Legacy Across Generations</title>
-  <meta name="description" content="Ram Bhanwan Ram Yamuna Prasad Group is a diversified conglomerate with businesses in Jewellery, Fashion, Automobiles, Hospitality, and Education." />
+  <title>Ram Bhawan Ram Yamuna Prasad Group | Building Legacy Across Generations</title>
+  <meta name="description" content="Ram Bhawan Ram Yamuna Prasad Group is a diversified conglomerate with businesses in Jewellery, Fashion, Automobiles, Hospitality, and Education." />
   <meta name="keywords" content="RBRYP Group, jewellery, clothing, automobiles, hotel, banquet, school, education" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=32" />
   <link rel="stylesheet" href="css/responsive.css" />
+  <style>
+    /* ── Leader cards (home) ── */
+    .home-leadership-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: clamp(20px, 2.4vw, 28px); margin-top: 12px; }
+    .leader-card {
+      position: relative; background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-sm); transition: transform 0.45s cubic-bezier(.2,.7,.3,1), box-shadow 0.45s; text-align: center;
+    }
+    .leader-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg);
+      padding: 2px; background: linear-gradient(135deg, var(--gold), transparent 55%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity: 0; transition: opacity 0.45s; pointer-events: none; z-index: 3;
+    }
+    .leader-card:hover { transform: translateY(-12px); box-shadow: var(--shadow-lg); }
+    .leader-card:hover::before { opacity: 1; }
+    .leader-gen {
+      position: absolute; top: 14px; left: 14px; z-index: 4;
+      background: var(--gold); color: var(--navy); border-radius: 30px;
+      font-family: 'Outfit',sans-serif; font-size: 0.62rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.1em; padding: 5px 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .leader-avatar {
+      position: relative; width: 100%; height: clamp(220px, 20vw, 260px); overflow: hidden;
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700;
+      color: var(--gold-light);
+    }
+    .leader-avatar img { width:100%; height:100%; object-fit:cover; object-position:top; transition: transform 0.6s cubic-bezier(.2,.7,.3,1); }
+    .leader-card:hover .leader-avatar img { transform: scale(1.06); }
+    .leader-avatar::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(11,22,40,0.45) 0%, transparent 45%);
+    }
+    .leader-body { padding: clamp(22px, 2.5vw, 26px) clamp(18px, 2vw, 22px) clamp(24px, 2.6vw, 30px); }
+    .leader-body h4 { margin-bottom: 4px; font-size: 1.08rem; }
+    .leader-role { font-family: 'Outfit',sans-serif; font-size: 0.78rem; color: var(--gold); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .leader-body p { font-size: 0.84rem; color: var(--gray-600); line-height: 1.65; }
+    .leader-card.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.7,.3,1); }
+    .leader-card.reveal.visible { opacity: 1; transform: translateY(0); }
+    .leader-card.reveal.visible:hover { transform: translateY(-12px); }
+    .leader-card.delay-1 { transition-delay: 0.05s; }
+    .leader-card.delay-2 { transition-delay: 0.18s; }
+    .leader-card.delay-3 { transition-delay: 0.31s; }
+    .leader-card.delay-4 { transition-delay: 0.44s; }
+    @media (max-width: 900px)  { .home-leadership-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; } .leader-avatar { height: clamp(220px, 32vw, 250px); } }
+    @media (max-width: 600px)  { .home-leadership-grid { grid-template-columns: 1fr; } .leader-avatar { height: clamp(210px, 58vw, 240px); } }
+    @media (max-width: 480px)  { .home-leadership-grid { grid-template-columns: 1fr; } .leader-body { padding: 20px 16px 24px; } }
+
+    /* ── Giving-back section (home) ── */
+    .giving-hero {
+      position: relative; padding: clamp(64px, 10vw, 100px) 0; text-align: center; overflow: hidden;
+    }
+    .giving-hero-bg {
+      position: absolute; inset: 0;
+      background: url('assets/images/community_bg.jpeg') center/cover no-repeat;
+    }
+    .giving-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,12,20,0.88) 0%, rgba(8,12,20,0.72) 100%);
+    }
+    .giving-hero-content { position: relative; z-index: 1; color: #fff; }
+    .giving-hero-content .section-label { color: var(--gold-light); }
+    .giving-hero-content p { color: rgba(255,255,255,0.78); max-width: 640px; margin: 0 auto 44px; font-size: 0.97rem; line-height: 1.85; }
+    .giving-stat-row { display: flex; gap: clamp(20px, 4vw, 48px); justify-content: center; flex-wrap: wrap; }
+    .giving-stat { text-align: center; min-width: min(130px, 45%); }
+    .giving-stat-num { font-family:'Playfair Display',serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 900; color: var(--gold); }
+    .giving-stat-label { font-family:'Outfit',sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.65); margin-top: 4px; }
+
+    .giving-story { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+    .giving-story > * { min-width: 0; }
+    .giving-story-img { overflow: hidden; min-height: clamp(300px, 34vw, 420px); }
+    .giving-story-img img { width:100%; height:100%; object-fit:cover; display:block; }
+    .giving-story-text {
+      padding: clamp(36px, 6vw, 72px) clamp(22px, 5vw, 60px); background: var(--navy);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .giving-story-text .section-label { color: var(--gold-light); }
+    .giving-story-text h3 { color: #fff; font-size: clamp(1.35rem, 3vw, 1.8rem); margin: 12px 0 16px; }
+    .giving-story-text p { color: rgba(255,255,255,0.72); font-size: 0.93rem; line-height: 1.85; margin-bottom: 14px; }
+    .giving-quote {
+      border-left: 3px solid var(--gold); padding-left: 20px;
+      font-family:'Playfair Display',serif; font-style:italic;
+      font-size: 1.05rem; color: rgba(255,255,255,0.88); margin: 24px 0 0;
+    }
+
+    .giving-impact { background:#fff; color:var(--navy); padding: clamp(64px, 8vw, 104px) 0; overflow:hidden; }
+    .impact-gallery-head { text-align:center; max-width:620px; margin:0 auto clamp(28px, 4vw, 44px); padding:0 20px; }
+    .impact-gallery-head .section-label { justify-content:center; color:var(--gold); margin-bottom:18px; }
+    .impact-gallery-head h2 { color:var(--navy); font-family:'Outfit',sans-serif; font-size:clamp(2rem, 4vw, 3.3rem); line-height:1.06; margin-bottom:14px; }
+    .impact-gallery-head p { max-width:520px; margin:0 auto; color:var(--text-mid); font-size:clamp(0.95rem, 1.7vw, 1.12rem); line-height:1.55; }
+    .impact-chip-row { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; max-width:1120px; margin:0 auto clamp(44px, 6vw, 72px); padding:0 20px; }
+    .impact-chip { min-height:46px; display:inline-flex; align-items:center; justify-content:center; padding:0 24px; border-radius:999px; border:1.5px solid rgba(21,21,21,0.28); color:var(--navy); background:#fff; font-family:'Outfit',sans-serif; font-weight:700; font-size:0.9rem; transition:var(--transition); }
+    .impact-chip.is-active, .impact-chip:hover { background:var(--navy); border-color:var(--navy); color:#fff; transform:translateY(-2px); }
+    .impact-chip.view-all { gap:10px; min-width:160px; }
+    .impact-carousel { position:relative; height:clamp(330px, 42vw, 560px); max-width:1280px; margin:0 auto; }
+    .impact-slide { position:absolute; top:50%; left:50%; width:clamp(240px, 28vw, 430px); height:clamp(300px, 36vw, 500px); border-radius:24px; overflow:hidden; isolation:isolate; background:#101827; box-shadow:0 28px 70px rgba(8,17,31,0.22); opacity:0; pointer-events:none; transition:transform 0.55s cubic-bezier(.2,.7,.3,1), opacity 0.35s ease, filter 0.35s ease; }
+    .impact-slide::before { content:''; position:absolute; inset:0; z-index:-2; background-image:var(--impact-img); background-size:cover; background-position:var(--impact-pos, center); transform:scale(1.02); }
+    .impact-slide::after { content:''; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg, rgba(8,17,31,0.02) 0%, rgba(8,17,31,0.18) 48%, rgba(8,17,31,0.82) 100%); }
+    .impact-slide.is-active { opacity:1; pointer-events:auto; z-index:5; transform:translate(-50%,-50%) scale(1.08); filter:none; }
+    .impact-slide.is-prev { opacity:1; z-index:4; transform:translate(-112%,-47%) scale(0.88); filter:saturate(0.9) brightness(0.92); }
+    .impact-slide.is-next { opacity:1; z-index:4; transform:translate(12%,-47%) scale(0.88); filter:saturate(0.9) brightness(0.92); }
+    .impact-slide.is-far-prev { opacity:0.72; z-index:3; transform:translate(-172%,-43%) scale(0.72); filter:saturate(0.75) brightness(0.86); }
+    .impact-slide.is-far-next { opacity:0.72; z-index:3; transform:translate(72%,-43%) scale(0.72); filter:saturate(0.75) brightness(0.86); }
+    .impact-slide-content { position:absolute; left:24px; right:24px; bottom:22px; color:#fff; }
+    .impact-slide-kicker { display:inline-flex; align-items:center; min-height:34px; padding:0 14px; border-radius:999px; background:var(--gold); color:var(--navy); font-family:'Outfit',sans-serif; font-size:0.68rem; font-weight:800; letter-spacing:0.13em; text-transform:uppercase; margin-bottom:14px; }
+    .impact-slide h3 { color:#fff; font-size:clamp(1.25rem, 2vw, 1.7rem); line-height:1.12; margin-bottom:8px; }
+    .impact-slide p { color:rgba(255,255,255,0.8); font-size:0.84rem; line-height:1.55; max-width:32em; }
+    .impact-carousel-controls { display:flex; justify-content:center; gap:14px; margin-top:clamp(28px, 4vw, 44px); }
+    .impact-arrow { width:54px; height:54px; border-radius:50%; border:1.5px solid rgba(21,21,21,0.35); display:flex; align-items:center; justify-content:center; color:var(--navy); background:#fff; font-size:1.25rem; transition:var(--transition); }
+    .impact-arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); transform:translateY(-2px); }
+
+    @media (max-width: 900px) {
+      .giving-story { grid-template-columns: 1fr; }
+      .giving-story-img { min-height: 280px; }
+      .giving-story-text { padding: clamp(40px, 6vw, 56px) clamp(22px, 5vw, 40px); }
+    }
+    @media (max-width: 768px) {
+      .giving-story { grid-template-columns: 1fr; }
+      .giving-story-img { min-height: clamp(220px, 45vw, 260px); }
+      .giving-hero-content p { font-size: 0.9rem; margin-bottom: 28px; }
+      .impact-chip-row { justify-content:flex-start; flex-wrap:nowrap; overflow-x:auto; padding-bottom:8px; scroll-snap-type:x mandatory; }
+      .impact-chip { flex:0 0 auto; scroll-snap-align:start; }
+      .impact-carousel { height:430px; }
+      .impact-slide { width:min(78vw, 360px); height:360px; border-radius:20px; }
+      .impact-slide.is-active { transform:translate(-50%,-50%) scale(1); }
+      .impact-slide.is-prev { transform:translate(-92%,-47%) scale(0.78); }
+      .impact-slide.is-next { transform:translate(-8%,-47%) scale(0.78); }
+      .impact-slide.is-far-prev,
+      .impact-slide.is-far-next { opacity:0; }
+    }
+    @media (max-width: 600px) {
+      .giving-story-text { padding: 34px 18px; }
+      .giving-quote { padding-left: 16px; font-size: 1rem; }
+    }
+    @media (max-width: 560px) {
+      .giving-hero { padding: 46px 0; }
+      .giving-hero-content p { margin-bottom: 22px; }
+      .giving-impact { padding: 48px 0 56px; }
+      .impact-chip-row { margin-bottom:32px; }
+      .impact-carousel { height:390px; }
+      .impact-slide { width:78vw; height:320px; }
+      .impact-slide-content { left:18px; right:18px; bottom:18px; }
+      .impact-slide p { display:none; }
+      .giving-stat-row { gap: 20px; }
+    }
+
+    /* ── Key Brands Marquee ── */
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .key-brands-section {
+      background: #f8f9fa;
+      border-top: 1px solid #eaeaea;
+      border-bottom: 1px solid #eaeaea;
+      padding: 36px 0;
+      overflow: hidden;
+    }
+    .key-brands-title {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      font-weight: 800;
+      color: #888888;
+      margin-bottom: 28px;
+      font-family: 'Outfit', sans-serif;
+    }
+    /* fade edges */
+    .brands-marquee-outer {
+      position: relative;
+      overflow: hidden;
+    }
+    .brands-marquee-outer::before,
+    .brands-marquee-outer::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .brands-marquee-outer::before {
+      left: 0;
+      background: linear-gradient(to right, #f8f9fa, transparent);
+    }
+    .brands-marquee-outer::after {
+      right: 0;
+      background: linear-gradient(to left, #f8f9fa, transparent);
+    }
+    .brands-marquee-track {
+      display: flex;
+      align-items: center;
+      gap: 70px;
+      width: max-content;
+      animation: marquee-scroll 28s linear infinite;
+      padding: 8px 0;
+    }
+    .brands-marquee-track:hover {
+      animation-play-state: paused;
+    }
+    .brand-item {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 52px;
+      min-width: 52px;
+      transition: transform 0.3s ease;
+    }
+    .brand-item:hover {
+      transform: scale(1.08);
+    }
+    .brand-item img {
+      height: 100%;
+      width: auto;
+      max-width: 210px;
+      max-height: 52px;
+      object-fit: contain;
+    }
+    @media (max-width: 768px) {
+      .brands-marquee-track { gap: 48px; }
+      .brand-item { height: 40px; min-width: 40px; }
+      .brand-item img { max-height: 40px; max-width: 160px; }
+      .brands-marquee-outer::before,
+      .brands-marquee-outer::after { width: 40px; }
+    }
+    /* ── Impact Pillars Grid ────────────────────────────── */
+    .giving-impact {
+      background: #f8f9fa;
+      padding: clamp(60px, 8vw, 100px) 0;
+    }
+    .giving-impact-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .giving-impact-head h2 { margin-top: 10px; }
+    .giving-impact-head > p {
+      color: var(--gray-600);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-top: 8px;
+    }
+    /* 3-col grid */
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .pillar-grid-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #ddd;
+    }
+    /* Top row taller, bottom row shorter — like the screenshot */
+    .pillar-grid-card:nth-child(-n+3) { height: 240px; }
+    .pillar-grid-card:nth-child(n+4)  { height: 200px; }
+    .pillar-grid-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+    .pillar-grid-card:hover img { transform: scale(1.06); }
+    /* gradient overlay */
+    .pillar-grid-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,12,20,0.72) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    /* title label */
+    .pillar-grid-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 18px 18px;
+      z-index: 2;
+    }
+    .pillar-grid-kicker {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--gold-pale);
+      margin-bottom: 4px;
+    }
+    .pillar-grid-label h3 {
+      font-size: 1rem;
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 0;
+    }
+    /* Hover lift */
+    .pillar-grid-card {
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .pillar-grid-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .giving-impact-head { grid-template-columns: 1fr; gap: 12px; }
+      .pillar-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .pillar-grid-card:nth-child(-n+3),
+      .pillar-grid-card:nth-child(n+4) { height: 180px; }
+    }
+    @media (max-width: 480px) {
+      .pillar-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .pillar-grid-card:nth-child(-n+3),
+      .pillar-grid-card:nth-child(n+4) { height: 150px; }
+      .pillar-grid-label h3 { font-size: 0.85rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -18,9 +345,9 @@
     <div class="navbar-inner">
       <!-- Logo -->
       <a href="index.html" class="nav-logo" aria-label="RBRYP Group Home">
-        <div class="logo-emblem">R</div>
+        <img src="assets/logos/logo.png" alt="Logo" class="logo-emblem">
         <div class="logo-text">
-          <span class="logo-name">Ram Bhanwan Ram<br>Yamuna Prasad Group</span>
+          <span class="logo-name">Ram Bhawan Ram<br>Yamuna Prasad Group</span>
           <span class="logo-tagline">A Legacy of Trust Since 1956</span>
         </div>
       </a>
@@ -38,38 +365,64 @@
             Our Businesses
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </a>
-          <div class="dropdown" role="menu" aria-label="Business units">
-            <div class="dropdown-item" role="none">
-              <a href="jewellery.html" role="menuitem">
-                <div class="dropdown-icon">💍</div> Jewellery
-              </a>
+          <div class="dropdown-mega" role="menu" aria-label="Business units">
+            <div class="dd-col" style="--dc:#7A1F1F">
+              <div class="dd-col-head">
+                <div class="dd-col-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="m12 22 4-13-3-6"/><path d="M12 22 8 9l3-6"/><path d="M2 9h20"/></svg></div>
+                <h6>Jewellery</h6>
+                <div class="dd-col-tag">Timeless elegance, crafted with trust since generations.</div>
+                <span class="dd-underline"></span>
+              </div>
+              <a href="kalyan.html" class="dd-item" role="menuitem"><div class="dd-item-logo"><img src="assets/images/kalyan_logo.svg" alt="Kalyan" loading="lazy"></div><div class="dd-item-text"><span class="din">Kalyan Jewellers</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="ykj.html" class="dd-item" role="menuitem"><div class="dd-item-logo" style="background:#8B1E3F;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">YKJ</div><div class="dd-item-text"><span class="din">Yamuna Prasad Krishna Kumar Jewellers</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="clothing.html" class="dd-item" role="menuitem"><div class="dd-item-logo"><img src="assets/images/saubhagyamStudio.jpeg" alt="Saubhagyam Studio" loading="lazy"></div><div class="dd-item-text"><span class="din">Saubhagyam Studio</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
-            <div class="dropdown-item" role="none">
-              <a href="clothing.html" role="menuitem">
-                <div class="dropdown-icon">👔</div> Clothing & Fashion
-              </a>
+            <div class="dd-col" style="--dc:#003B7A">
+              <div class="dd-col-head">
+                <div class="dd-col-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8A3 3 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div>
+                <h6>Automobiles</h6>
+                <div class="dd-col-tag">Driven by performance, powered by trust.</div>
+                <span class="dd-underline"></span>
+              </div>
+              <a href="kia.html" class="dd-item" role="menuitem"><div class="dd-item-logo"><img src="assets/images/kia_logo.svg" alt="Kia" loading="lazy"></div><div class="dd-item-text"><span class="din">Kia</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="bajaj.html" class="dd-item" role="menuitem"><div class="dd-item-logo"><img src="assets/images/bajaj_logo.svg" alt="Bajaj" loading="lazy"></div><div class="dd-item-text"><span class="din">Bajaj</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="ktm.html" class="dd-item" role="menuitem"><div class="dd-item-logo"><img src="assets/images/ktm_logo.svg" alt="KTM" loading="lazy"></div><div class="dd-item-text"><span class="din">KTM</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="triumph.html" class="dd-item" role="menuitem"><div class="dd-item-logo"><img src="assets/images/triumph_logo.png" alt="Triumph" loading="lazy"></div><div class="dd-item-text"><span class="din">Triumph</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="chetak.html" class="dd-item" role="menuitem"><div class="dd-item-logo"><img src="assets/images/chetak_logo.jpeg" alt="Chetak" loading="lazy"></div><div class="dd-item-text"><span class="din">Chetak</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
-            <div class="dropdown-item" role="none">
-              <a href="automobiles.html" role="menuitem">
-                <div class="dropdown-icon">🚗</div> 4-Wheeler Dealership
-              </a>
+            <div class="dd-col" style="--dc:#2E7D32">
+              <div class="dd-col-head">
+                <div class="dd-col-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
+                <h6>Education</h6>
+                <div class="dd-col-tag">Nurturing future leaders with world-class education.</div>
+                <span class="dd-underline"></span>
+              </div>
+              <a href="gdgoenka.html" class="dd-item" role="menuitem"><div class="dd-item-logo"><img src="assets/images/gdgoenka_logo.svg" alt="GD Goenka" loading="lazy"></div><div class="dd-item-text"><span class="din">GD Goenka Public School</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="study-oasis.html" class="dd-item" role="menuitem"><div class="dd-item-logo" style="background:#2E7D32;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">SO</div><div class="dd-item-text"><span class="din">Study Oasis Hostel</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
-            <div class="dropdown-item" role="none">
-              <a href="automobiles.html#two-wheeler" role="menuitem">
-                <div class="dropdown-icon">🛵</div> 2-Wheeler Dealership
-              </a>
+            <div class="dd-col" style="--dc:#9C6B30">
+              <div class="dd-col-head">
+                <div class="dd-col-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div>
+                <h6>Hospitality</h6>
+                <div class="dd-col-tag">Hospitality that feels like home.</div>
+                <span class="dd-underline"></span>
+              </div>
+              <a href="rbr-resort.html" class="dd-item" role="menuitem"><div class="dd-item-logo"><img src="assets/images/rbr_resort_logo.png" alt="Ram Bhawan Ram Resort" loading="lazy"></div><div class="dd-item-text"><span class="din">Ram Bhawan Ram Resort</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="rbr-business-center.html" class="dd-item" role="menuitem"><div class="dd-item-logo" style="background:#16294D;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">RBC</div><div class="dd-item-text"><span class="din">RBR Business Center</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="hotel-atithi.html" class="dd-item" role="menuitem"><div class="dd-item-logo" style="background:#7A2E2E;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">HA</div><div class="dd-item-text"><span class="din">Hotel Atithi</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
             </div>
-            <div class="dropdown-item" role="none">
-              <a href="hospitality.html" role="menuitem">
-                <div class="dropdown-icon">🏨</div> Hotel & Banquet
-              </a>
-            </div>
-            <div class="dropdown-item" role="none">
-              <a href="education.html" role="menuitem">
-                <div class="dropdown-icon">🎓</div> Education & School
-              </a>
+            <div class="dd-promo" style="background-image:linear-gradient(180deg, rgba(11,22,40,0.15), rgba(11,22,40,0.82)), url('assets/images/rbrbussinessCenterHorizontal.png')">
+              <div class="dd-promo-eyebrow">One Group. Many Ventures.</div>
+              <h5>Building a stronger tomorrow, together.</h5>
+              <a href="businesses.html" class="dd-promo-cta">Explore All Businesses <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
           </div>
+        </li>
+        <li class="nav-item" role="none">
+          <a href="investors.html" class="nav-link" role="menuitem">Partner With Us</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a href="careers.html" class="nav-link" role="menuitem">Careers</a>
         </li>
         <li class="nav-item" role="none">
           <a href="contact.html" class="nav-link" role="menuitem">Contact</a>
@@ -99,15 +452,17 @@
       <div id="mobileBusinesses" class="mobile-sub-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease">
         <div class="mobile-sub-links">
           <p class="mobile-sub-title">Our Verticals</p>
-          <a href="jewellery.html">💍 Jewellery</a>
-          <a href="clothing.html">👔 Clothing & Fashion</a>
-          <a href="automobiles.html">🚗 4-Wheeler Dealership</a>
-          <a href="automobiles.html#two-wheeler">🛵 2-Wheeler Dealership</a>
-          <a href="hospitality.html">🏨 Hotel & Banquet</a>
-          <a href="education.html">🎓 Education & School</a>
+          <a href="ykj.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="m12 22 4-13-3-6"/><path d="M12 22 8 9l3-6"/><path d="M2 9h20"/></svg></span>Jewellery</a>
+          <a href="clothing.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23Z"/></svg></span>Clothing & Fashion</a>
+          <a href="kia.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8A3 3 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span>4-Wheeler Dealership</a>
+          <a href="bajaj.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg></span>2-Wheeler Dealership</a>
+          <a href="rbr-resort.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></span>Hotel & Banquet</a>
+          <a href="gdgoenka.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>Education & School</a>
         </div>
       </div>
     </div>
+    <a href="investors.html" class="mobile-nav-link">Partner With Us</a>
+    <a href="careers.html" class="mobile-nav-link">Careers</a>
     <a href="contact.html" class="mobile-nav-link">Contact</a>
     <div style="margin-top:32px">
       <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Get in Touch</a>
@@ -118,7 +473,9 @@
        HERO
   ══════════════════════════════════════════════════════════ -->
   <section class="hero" id="home" aria-label="Hero section">
-    <div class="hero-bg" role="img" aria-label="City skyline background"></div>
+    <video class="hero-video" autoplay loop muted playsinline poster="assets/images/hero_bg.png">
+      <source src="assets/videos/business-hero.mp4" type="video/mp4">
+    </video>
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
@@ -128,7 +485,7 @@
       </div>
 
       <h1 class="hero-title">
-        Ram Bhanwan<br>
+        Ram Bhawan<br>
         <span id="typedText">Building Legacy</span>
       </h1>
 
@@ -154,8 +511,8 @@
           <div class="hero-stat-label">Years of Legacy</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-value"><span class="counter" data-target="6">0</span></div>
-          <div class="hero-stat-label">Business Verticals</div>
+          <div class="hero-stat-value"><span class="counter" data-target="11">0</span>+</div>
+          <div class="hero-stat-label">Brands</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-value"><span class="counter" data-target="500">0</span>+</div>
@@ -175,261 +532,187 @@
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       ABOUT STRIP
+       KEY BUSINESSES MARQUEE
   ══════════════════════════════════════════════════════════ -->
-  <section class="about-strip" aria-label="About us">
-    <div class="about-strip-inner">
-      <div class="about-image-col reveal-left">
-        <img src="assets/images/about_bg.png" alt="RBRYP Group leadership and corporate culture" loading="lazy" />
-        <div class="about-image-overlay"></div>
-      </div>
-      <div class="about-content-col reveal-right">
-        <div class="section-label">Our Story</div>
-        <h2>A Legacy of Trust &amp; Excellence</h2>
-        <span class="gold-divider"></span>
-        <p>
-          Founded by the vision of its founders, Ram Bhanwan Ram Yamuna Prasad Group has grown 
-          from a humble beginning into one of the region's most respected multi-sector business houses. 
-          Our journey is built on integrity, quality, and an unwavering commitment to our customers.
-        </p>
-        <p>
-          From the sparkle of our jewellery to the excellence of our educational institutions — 
-          every venture we undertake is driven by a single promise: to deliver the best to our community.
-        </p>
-        <div class="about-values">
-          <div class="about-value-item">
-            <div class="about-value-icon">🏆</div>
-            <div class="about-value-text">
-              <h5>Excellence</h5>
-              <p>In every product &amp; service</p>
-            </div>
-          </div>
-          <div class="about-value-item">
-            <div class="about-value-icon">🤝</div>
-            <div class="about-value-text">
-              <h5>Trust</h5>
-              <p>Built over generations</p>
-            </div>
-          </div>
-          <div class="about-value-item">
-            <div class="about-value-icon">🌱</div>
-            <div class="about-value-text">
-              <h5>Growth</h5>
-              <p>Continuous innovation</p>
-            </div>
-          </div>
-          <div class="about-value-item">
-            <div class="about-value-icon">❤️</div>
-            <div class="about-value-text">
-              <h5>Community</h5>
-              <p>Giving back always</p>
-            </div>
-          </div>
-        </div>
-        <a href="about.html" class="btn btn-primary" id="read-more-about-btn">Read Our Full Story</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       CORE VALUES SECTION
-  ══════════════════════════════════════════════════════════ -->
-  <section class="values-section section" aria-label="Core values">
+  <section class="key-brands-section" aria-label="Key Brands">
     <div class="container">
-      <div class="section-header text-center reveal">
-        <div class="section-label">Our Foundation</div>
-        <h2 class="section-title">Core Values That Drive Us</h2>
-        <span class="gold-divider center"></span>
-        <p class="section-desc">
-          Like the Gyan Mudra philosophy, our four core values harmonize to create excellence and integrity in everything we do.
-        </p>
-      </div>
-
-      <div class="values-grid">
-        <div class="value-card reveal delay-1">
-          <div class="value-card-icon">🎓</div>
-          <h3 class="value-card-title">Knowledge</h3>
-          <p class="value-card-desc">We strive for deeper understanding of our markets, customers, and communities. Continuous learning drives our innovation.</p>
-          <div class="value-card-accent"></div>
-        </div>
-
-        <div class="value-card reveal delay-2">
-          <div class="value-card-icon">⚡</div>
-          <h3 class="value-card-title">Action</h3>
-          <p class="value-card-desc">We are empowered to act decisively and create value. Entrepreneurship and integrity guide our every decision.</p>
-          <div class="value-card-accent"></div>
-        </div>
-
-        <div class="value-card reveal delay-3">
-          <div class="value-card-icon">❤️</div>
-          <h3 class="value-card-title">Care</h3>
-          <p class="value-card-desc">We protect and enhance the interests of our customers, employees, partners, and communities. Humility keeps us grounded.</p>
-          <div class="value-card-accent"></div>
-        </div>
-
-        <div class="value-card reveal delay-4">
-          <div class="value-card-icon">🏆</div>
-          <h3 class="value-card-title">Impact</h3>
-          <p class="value-card-desc">We strive for market leadership through performance and resilience. Building businesses that endure for generations.</p>
-          <div class="value-card-accent"></div>
-        </div>
+      <h2 class="key-brands-title">Our Key Businesses</h2>
+    </div>
+    <div class="brands-marquee-outer">
+      <div class="brands-marquee-track" id="brandsTrack">
+        <!-- Set 1 -->
+        <div class="brand-item"><img src="assets/images/kalyan_logo.svg" alt="Kalyan Jewellers" /></div>
+        <div class="brand-item"><img src="assets/images/kia_logo.svg" alt="Kia Motors" style="max-height:70%" /></div>
+        <div class="brand-item"><img src="assets/images/ktm_logo.svg" alt="KTM" /></div>
+        <div class="brand-item"><img src="assets/images/triumph_logo.png" alt="Triumph Motorcycles" /></div>
+        <div class="brand-item"><img src="assets/images/bajaj_logo.svg" alt="Bajaj Auto" /></div>
+        <div class="brand-item"><img src="assets/images/gdgoenka_logo.svg" alt="GD Goenka School" /></div>
+        <div class="brand-item"><img src="assets/images/rbr_resort_logo.png" alt="Ram Bhawan Ram Resort" /></div>
+        <div class="brand-item"><img src="assets/images/ykj.png" alt="YKJ" /></div>
+        <!-- Set 2 — duplicate for seamless loop -->
+        <div class="brand-item" aria-hidden="true"><img src="assets/images/kalyan_logo.svg" alt="" /></div>
+        <div class="brand-item" aria-hidden="true"><img src="assets/images/kia_logo.svg" alt="" style="max-height:70%" /></div>
+        <div class="brand-item" aria-hidden="true"><img src="assets/images/ktm_logo.svg" alt="" /></div>
+        <div class="brand-item" aria-hidden="true"><img src="assets/images/triumph_logo.png" alt="" /></div>
+        <div class="brand-item" aria-hidden="true"><img src="assets/images/bajaj_logo.svg" alt="" /></div>
+        <div class="brand-item" aria-hidden="true"><img src="assets/images/gdgoenka_logo.svg" alt="" /></div>
+        <div class="brand-item" aria-hidden="true"><img src="assets/images/rbr_resort_logo.png" alt="" /></div>
+        <div class="brand-item" aria-hidden="true"><img src="assets/images/ykj.png" alt="" /></div>
       </div>
     </div>
   </section>
-
   <!-- ══════════════════════════════════════════════════════════
-       BUSINESS CATEGORIES HERO
+       BUSINESSES
   ══════════════════════════════════════════════════════════ -->
-  <section class="categories-section" aria-label="Business categories">
+    <section class="verticals section" id="businesses" aria-label="Our business verticals">
     <div class="container">
-      <div class="section-header text-center reveal">
-        <div class="section-label">What We Do</div>
-        <h2 class="section-title">Our Business Verticals</h2>
+      <div class="vert-head reveal">
+        <div class="vert-eyebrow">RBRYP Group</div>
+        <h2>Our Business Verticals</h2>
         <span class="gold-divider center"></span>
-      </div>
-
-      <div class="categories-grid">
-        <div class="category-tile reveal delay-1">
-          <div class="category-tile-bg gradient-1"></div>
-          <div class="category-tile-content">
-            <div class="category-tile-icon">💍</div>
-            <h3>Jewellery</h3>
-            <p>Kalyan Jewellers — Exquisite collections crafted with passion and heritage.</p>
-          </div>
-        </div>
-
-        <div class="category-tile reveal delay-2">
-          <div class="category-tile-bg gradient-2"></div>
-          <div class="category-tile-content">
-            <div class="category-tile-icon">👔</div>
-            <h3>Fashion</h3>
-            <p>Trendy clothing and premium fashion for every occasion and style.</p>
-          </div>
-        </div>
-
-        <div class="category-tile reveal delay-3">
-          <div class="category-tile-bg gradient-3"></div>
-          <div class="category-tile-content">
-            <div class="category-tile-icon">🚗</div>
-            <h3>Automobiles</h3>
-            <p>Kia, KTM, Bajaj — Authorized dealerships for premium mobility.</p>
-          </div>
-        </div>
-
-        <div class="category-tile reveal delay-4">
-          <div class="category-tile-bg gradient-4"></div>
-          <div class="category-tile-content">
-            <div class="category-tile-icon">🏨</div>
-            <h3>Hospitality</h3>
-            <p>Premium hotel and banquet services for memorable occasions.</p>
-          </div>
-        </div>
-
-        <div class="category-tile reveal delay-1">
-          <div class="category-tile-bg gradient-5"></div>
-          <div class="category-tile-content">
-            <div class="category-tile-icon">🎓</div>
-            <h3>Education</h3>
-            <p>GD Goenka School — Quality education building future leaders.</p>
-          </div>
-        </div>
-
-        <div class="category-tile reveal delay-2">
-          <div class="category-tile-bg gradient-6"></div>
-          <div class="category-tile-content">
-            <div class="category-tile-icon">🛵</div>
-            <h3>2-Wheeler Sales</h3>
-            <p>Latest two-wheeler models and accessories from trusted brands.</p>
-          </div>
+        <p class="vert-sub">Diverse businesses. Shared values.<br>Delivering excellence across every experience.</p>
+        <div class="vert-stats">
+          <div class="vstat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="m12 22 4-13-3-6"/><path d="M12 22 8 9l3-6"/><path d="M2 9h20"/></svg><div><b>10+</b><span>Brands</span></div></div>
+          <div class="vstat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><b>20+</b><span>Locations</span></div></div>
+          <div class="vstat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><div><b>500+</b><span>Team Members</span></div></div>
+          <div class="vstat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg><div><b>25+</b><span>Years of Trust</span></div></div>
         </div>
       </div>
+
+      <!-- Jewellery -->
+      <div class="vert-div reveal" style="--vd:#7A1F1F">
+        <div class="vert-div-head">
+          <span class="vd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="m12 22 4-13-3-6"/><path d="M12 22 8 9l3-6"/><path d="M2 9h20"/></svg></span><h3>JEWELLERY</h3>
+          <span class="vd-line"></span><span class="vd-tag">Timeless elegance. Crafted with trust.</span>
+          <a href="businesses.html#jewellery" class="vd-viewall">View All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="vgrid cols3">
+        <a href="kalyan.html" class="vcard jewel" style="--c:#7A1F1F">
+          <div class="vcard-img" style="background-image:url('assets/images/kalyan.webp');background-size:cover;background-position:center"></div>
+          <div class="vcard-foot">
+            <div class="vlogo">
+              <img src="assets/images/kalyan_logo.svg" alt="Kalyan Jewellers" style="height:26px;width:auto;display:block;margin:0 auto" loading="lazy">
+            </div>
+            <div><h4>Kalyan Jewellers</h4><div class="vtag">Trust is Everything</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+          </div>
+        </a>
+        <a href="ykj.html" class="vcard jewel" style="--c:#8B1E3F">
+          <div class="vcard-img" style="background-image:url('assets/images/jewellery.png');background-size:cover;background-position:center"></div>
+          <div class="vcard-foot">
+            <div class="vlogo">YKJ</div>
+            <div><h4>Yamuna Prasad Krishna Kumar Jewellers</h4><div class="vtag">Heritage. Purity. Perfection.</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+          </div>
+        </a>
+        <a href="clothing.html" class="vcard jewel" style="--c:#8B1A1A">
+          <div class="vcard-img" style="background-image:url('assets/images/clothing_store.png');background-size:cover;background-position:center"></div>
+          <div class="vcard-foot">
+            <div class="vlogo"><img src="assets/images/saubhagyamStudio.jpeg" alt="Saubhagyam Studio" style="height:36px;width:36px;object-fit:cover;border-radius:6px;display:block;margin:0 auto" loading="lazy"></div>
+            <div><h4>Saubhagyam Studio</h4><div class="vtag">Fashion that celebrates every story</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+          </div>
+        </a>
+        </div>
+      </div>
+
+      <!-- Automobiles -->
+      <div class="vert-div reveal" style="--vd:#003B7A">
+        <div class="vert-div-head">
+          <span class="vd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8A3 3 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span><h3>AUTOMOBILES</h3>
+          <span class="vd-line"></span><span class="vd-tag">Driven by innovation. Built for performance.</span>
+          <a href="businesses.html#automobiles" class="vd-viewall">View All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="vgrid cols5">
+        <a href="kia.html" class="vcard auto" style="--c:#05141F">
+          <div class="vcard-img" style="background-image:url('assets/images/kia.webp');background-size:cover;background-position:center"></div>
+          <div class="vcard-foot"><div class="vlogo"><img src="assets/images/kia_logo.svg" alt="Kia" style="height:26px;width:auto;display:block;margin:0 auto" loading="lazy"></div><div class="vtag">Movement that Inspires</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+        </a>
+        <a href="triumph.html" class="vcard auto" style="--c:#141414">
+          <div class="vcard-img" style="background-image:url('assets/images/gallery/triumph/1.jpg');background-size:cover;background-position:center"></div>
+          <div class="vcard-foot"><div class="vlogo"><img src="assets/images/triumph_logo.png" alt="Triumph" style="height:22px;width:auto;display:block;margin:0 auto" loading="lazy"></div><div class="vtag">For the Ride</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+        </a>
+        <a href="bajaj.html" class="vcard auto" style="--c:#003B7A">
+          <div class="vcard-img" style="background-image:url('assets/images/bajaj.webp');background-size:cover;background-position:center"></div>
+          <div class="vcard-foot"><div class="vlogo"><img src="assets/images/bajaj_logo.svg" alt="Bajaj" style="height:22px;width:auto;display:block;margin:0 auto" loading="lazy"></div><div class="vtag">The World&#39;s Favourite Indian</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+        </a>
+        <a href="ktm.html" class="vcard auto" style="--c:#FF6600">
+          <div class="vcard-img" style="background-image:url('assets/images/ktm.webp');background-size:cover;background-position:center"></div>
+          <div class="vcard-foot"><div class="vlogo"><img src="assets/images/ktm_logo.svg" alt="KTM" style="height:26px;width:auto;display:block;margin:0 auto" loading="lazy"></div><div class="vtag">Ready to Race</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+        </a>
+        <a href="chetak.html" class="vcard auto" style="--c:#47BCC8">
+          <div class="vcard-img" style="background-image:url('assets/images/gallery/chetak_lineup.jpg');background-size:cover;background-position:center"></div>
+          <div class="vcard-foot"><div class="vlogo"><img src="assets/images/chetak_logo.jpeg" alt="Chetak" style="height:44px;width:auto;display:block;margin:0 auto" loading="lazy"></div><div class="vtag">The Original Electric</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+        </a>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="vert-div reveal" style="--vd:#2E7D32">
+        <div class="vert-div-head">
+          <span class="vd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><h3>EDUCATION</h3>
+          <span class="vd-line"></span><span class="vd-tag">Empowering minds. Shaping the future.</span>
+          <a href="businesses.html#education" class="vd-viewall">View All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="vgrid cols2">
+        <a href="gdgoenka.html" class="vcard horiz edu" style="--c:#0D4F8B">
+          <div class="vcard-img" style="background-image:url('assets/images/GDGORANKA.webp');background-size:cover;background-position:center"></div>
+          <div class="vcard-foot"><div class="vlogo"><img src="assets/images/gdgoenka_logo.svg" alt="GD Goenka" style="height:42px;width:auto;display:block;margin:0 auto" loading="lazy"></div><h4>GD Goenka Public School, Motihari</h4><div class="vtag">Nurturing future leaders</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+        </a>
+        <a href="study-oasis.html" class="vcard horiz edu" style="--c:#2E7D32">
+          <div class="vcard-img" style="background-image:url('assets/images/gallery/study-oasis/1.jpg');background-size:cover;background-position:center"></div>
+          <div class="vcard-foot"><div class="vlogo">STUDY OASIS</div><h4>Study Oasis Hostel</h4><div class="vtag">A better place to learn &amp; live</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+        </a>
+        </div>
+      </div>
+
+      <!-- Hospitality -->
+      <div class="vert-div reveal" style="--vd:#9C6B30">
+        <div class="vert-div-head"><span class="vd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></span><h3>HOSPITALITY</h3>
+          <span class="vd-line"></span><span class="vd-tag">Experience comfort. Create memories.</span>
+          <a href="businesses.html#hospitality" class="vd-viewall">View All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="vgrid cols3">
+          <a href="rbr-resort.html" class="vcard jewel" style="--c:#9C6B30">
+            <div class="vcard-img" style="background-image:url('assets/images/rbrResort.webp');background-size:cover;background-position:center"></div>
+            <div class="vcard-foot">
+              <div class="vlogo"><img src="assets/images/rbr_resort_logo.png" alt="Ram Bhawan Ram Resort" style="height:38px;width:auto;display:block;margin:0 auto" loading="lazy"></div>
+              <div><h4>Ram Bhawan Ram Resort</h4><div class="vtag">Where every stay becomes a memory</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+            </div>
+          </a>
+          <a href="the-family-bawarchi.html" class="vcard jewel" style="--c:#8A5A2B">
+            <div class="vcard-img" style="background-image:url('assets/images/bawarchi.jpg');background-size:cover;background-position:center"></div>
+            <div class="vcard-foot">
+              <div class="vlogo">FB</div>
+              <div><h4>The Family Bawarchi</h4><div class="vtag">Multi-cuisine dining inside Ram Bhawan Ram Resort</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+            </div>
+          </a>
+          <a href="hotel-atithi.html" class="vcard jewel" style="--c:#7A2E2E">
+            <div class="vcard-img" style="background-image:url('assets/images/hotel_atithi.jpg');background-size:cover;background-position:center"></div>
+            <div class="vcard-foot">
+              <div class="vlogo">HA</div>
+              <div><h4>Hotel Atithi</h4><div class="vtag">Warm hospitality in the heart of Motihari</div><span class="vexplore">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- New & Upcoming -->
+      <div class="vert-div reveal" style="--vd:#9C6B30">
+        <div class="vert-div-head"><span class="vd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></span><h3>NEW &amp; UPCOMING</h3><span class="vd-line"></span><span class="vd-tag">Growing into the future.</span></div>
+        <div class="vgrid cols2">
+          <a href="rbr-business-center.html" class="vcard horiz hosp" style="--c:#9C6B30">
+            <div class="vcard-img" style="background-image:url('assets/images/rbrbussinessCenterHorizontal.png');background-size:cover;background-position:center"><span class="vcard-badge">Upcoming</span></div>
+            <div class="vcard-foot"><div class="vlogo">RBR</div><h4>RBR Business Center</h4><div class="vtag">A premium commercial &amp; business hub — launching soon in Motihari.</div><span class="vexplore">Register Interest <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+          </a>
+        </div>
+      </div>
+      
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════════════════
-       LEADERSHIP SECTION
-  ══════════════════════════════════════════════════════════ -->
-  <section class="leadership-section section" aria-label="Leadership team">
+  <section class="vert-cta" aria-label="Group statement">
     <div class="container">
-      <div class="section-header text-center reveal">
-        <div class="section-label">Our Team</div>
-        <h2 class="section-title">Visionary Leadership</h2>
-        <span class="gold-divider center"></span>
-        <p class="section-desc">
-          Four generations of dedicated leaders steering the RBRYP Group towards excellence and innovation.
-        </p>
-      </div>
-
-      <div class="leadership-grid">
-        <div class="leader-card reveal delay-1">
-          <div class="leader-card-image">
-            <div class="leader-placeholder">👨‍💼</div>
-          </div>
-          <div class="leader-card-body">
-            <h3 class="leader-name">Shri Rambhawan Ram</h3>
-            <p class="leader-role">Founder & Pioneer</p>
-            <p class="leader-desc">Founded the group in 1956 with unwavering commitment to excellence and community trust.</p>
-          </div>
-        </div>
-
-        <div class="leader-card reveal delay-2">
-          <div class="leader-card-image">
-            <div class="leader-placeholder">👨‍💼</div>
-          </div>
-          <div class="leader-card-body">
-            <h3 class="leader-name">Shri Yamuna Prasad</h3>
-            <p class="leader-role">Generation II Leader</p>
-            <p class="leader-desc">Expanded vision in the 1970s, bringing jewellery excellence to the group's portfolio.</p>
-          </div>
-        </div>
-
-        <div class="leader-card reveal delay-3">
-          <div class="leader-card-image">
-            <div class="leader-placeholder">👨‍💼</div>
-          </div>
-          <div class="leader-card-body">
-            <h3 class="leader-name">Shri Krishna Kumar</h3>
-            <p class="leader-role">Generation III Visionary</p>
-            <p class="leader-desc">Diversified into automobiles and established premium educational institutions.</p>
-          </div>
-        </div>
-
-        <div class="leader-card reveal delay-4">
-          <div class="leader-card-image">
-            <div class="leader-placeholder">👨‍💼</div>
-          </div>
-          <div class="leader-card-body">
-            <h3 class="leader-name">Shri Amit Kumar</h3>
-            <p class="leader-role">Generation IV - Co-Chairman</p>
-            <p class="leader-desc">Modern era leader bringing global brands and digital innovation to the group.</p>
-          </div>
-        </div>
-
-        <div class="leader-card reveal delay-1">
-          <div class="leader-card-image">
-            <div class="leader-placeholder">👨‍💼</div>
-          </div>
-          <div class="leader-card-body">
-            <h3 class="leader-name">Shri Sumit Kumar</h3>
-            <p class="leader-role">Generation IV - Co-Chairman</p>
-            <p class="leader-desc">Scaling businesses with technology and strategic partnerships across sectors.</p>
-          </div>
-        </div>
-
-        <div class="leader-card reveal delay-2">
-          <div class="leader-card-image">
-            <div class="leader-placeholder">👨‍💼</div>
-          </div>
-          <div class="leader-card-body">
-            <h3 class="leader-name">Leadership Team</h3>
-            <p class="leader-role">Sector Specialists</p>
-            <p class="leader-desc">Experienced professionals managing jewellery, automobiles, hospitality, and education divisions.</p>
-          </div>
-        </div>
-      </div>
+      <div><h2>One Group. Many Possibilities.</h2><p>Building trust across industries. Creating value for generations.</p></div>
+      <a href="businesses.html" class="btn btn-primary btn-lg">Discover More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
   </section>
-
   <!-- ══════════════════════════════════════════════════════════
        STATS
   ══════════════════════════════════════════════════════════ -->
@@ -437,24 +720,32 @@
     <div class="container">
       <div class="stats-grid">
         <div class="stat-card reveal delay-1">
-          <span class="stat-icon">💍</span>
+          <span class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="m12 22 4-13-3-6"/><path d="M12 22 8 9l3-6"/><path d="M2 9h20"/></svg>
+          </span>
           <span class="stat-number counter" data-target="25">0</span>
           <div class="stat-label">Jewellery Collections</div>
         </div>
         <div class="stat-card reveal delay-2">
-          <span class="stat-icon">🚗</span>
+          <span class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8A3 3 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+          </span>
           <span class="stat-number counter" data-target="1200">0</span>
           <span class="stat-suffix">+</span>
           <div class="stat-label">Vehicles Sold Per Year</div>
         </div>
         <div class="stat-card reveal delay-3">
-          <span class="stat-icon">🏨</span>
+          <span class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg>
+          </span>
           <span class="stat-number counter" data-target="500">0</span>
           <span class="stat-suffix">+</span>
           <div class="stat-label">Events Hosted</div>
         </div>
         <div class="stat-card reveal delay-4">
-          <span class="stat-icon">🎓</span>
+          <span class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+          </span>
           <span class="stat-number counter" data-target="2000">0</span>
           <span class="stat-suffix">+</span>
           <div class="stat-label">Students Enrolled</div>
@@ -462,136 +753,6 @@
       </div>
     </div>
   </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       BUSINESSES
-  ══════════════════════════════════════════════════════════ -->
-  <section class="businesses-section section" id="businesses" aria-label="Our businesses">
-    <div class="container">
-      <div class="section-header text-center reveal">
-        <div class="section-label">Our Portfolio</div>
-        <h2 class="section-title">Six Pillars of Our Group</h2>
-        <span class="gold-divider center"></span>
-        <p class="section-desc">
-          From timeless jewellery to modern automobiles, premium hospitality to quality education — 
-          we serve every milestone of your life.
-        </p>
-      </div>
-
-      <div class="businesses-grid">
-
-        <!-- Jewellery -->
-        <article class="biz-card biz-gold reveal delay-1">
-          <div class="biz-card-image">
-            <img src="assets/images/jewellery.png" alt="Kalyan Jewellers showroom" loading="lazy" />
-            <div class="biz-overlay"></div>
-            <span class="biz-tag">Authorized Franchise</span>
-          </div>
-          <div class="biz-card-body">
-            <div class="biz-icon">💍</div>
-            <h3>Kalyan Jewellers</h3>
-            <p>Bringing you the trusted legacy of Kalyan Jewellers. Exquisite gold, diamond &amp; silver jewellery crafted with passion.</p>
-            <a href="jewellery.html" class="biz-link" id="jewellery-card-link">
-              Explore Collection
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- Clothing -->
-        <article class="biz-card biz-crimson reveal delay-2">
-          <div class="biz-card-image">
-            <div class="biz-card-image-placeholder" style="background: linear-gradient(135deg,#6B1A1A,#B52626);">👔</div>
-            <div class="biz-overlay"></div>
-            <span class="biz-tag">Fashion</span>
-          </div>
-          <div class="biz-card-body">
-            <div class="biz-icon">👔</div>
-            <h3>Fashion House</h3>
-            <p>Curated ethnic wear, western fusion &amp; designer collections for every occasion — from festive celebrations to daily wear.</p>
-            <a href="clothing.html" class="biz-link" id="clothing-card-link">
-              View Collections
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- 4-Wheeler -->
-        <article class="biz-card biz-navy reveal delay-3">
-          <div class="biz-card-image">
-            <div class="biz-card-image-placeholder" style="background: linear-gradient(135deg,#0B1628,#1A3060);">🚗</div>
-            <div class="biz-overlay"></div>
-            <span class="biz-tag">Authorized Dealer</span>
-          </div>
-          <div class="biz-card-body">
-            <div class="biz-icon">🚗</div>
-            <h3>Kia Motors</h3>
-            <p>Authorized Kia dealership offering the latest models, genuine accessories, expert service &amp; easy financing options.</p>
-            <a href="automobiles.html" class="biz-link" id="car-card-link">
-              Browse Vehicles
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- 2-Wheeler -->
-        <article class="biz-card biz-teal reveal delay-4">
-          <div class="biz-card-image">
-            <div class="biz-card-image-placeholder" style="background: linear-gradient(135deg,#0E4A4A,#0E6E6F);">🛵</div>
-            <div class="biz-overlay"></div>
-            <span class="biz-tag">Authorized Dealer</span>
-          </div>
-          <div class="biz-card-body">
-            <div class="biz-icon">🛵</div>
-            <h3>KTM &amp; Bajaj</h3>
-            <p>Authorized dealership for KTM and Bajaj. Motorcycles &amp; scooters with hassle-free service &amp; exchange programs.</p>
-            <a href="automobiles.html#two-wheeler" class="biz-link" id="bike-card-link">
-              Explore Bikes
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- Hotel & Banquet -->
-        <article class="biz-card biz-purple reveal delay-5">
-          <div class="biz-card-image">
-            <div class="biz-card-image-placeholder" style="background: linear-gradient(135deg,#2C1B4A,#483478);">🏨</div>
-            <div class="biz-overlay"></div>
-            <span class="biz-tag">Hospitality</span>
-          </div>
-          <div class="biz-card-body">
-            <div class="biz-icon">🏨</div>
-            <h3>Hotel &amp; Banquet</h3>
-            <p>Luxurious banquet halls for weddings, corporate events &amp; celebrations. World-class hospitality with exquisite catering.</p>
-            <a href="hospitality.html" class="biz-link" id="hotel-card-link">
-              Book an Event
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- Education -->
-        <article class="biz-card biz-green reveal delay-6">
-          <div class="biz-card-image">
-            <div class="biz-card-image-placeholder" style="background: linear-gradient(135deg,#0F3320,#226C3F);">🎓</div>
-            <div class="biz-overlay"></div>
-            <span class="biz-tag">Education</span>
-          </div>
-          <div class="biz-card-body">
-            <div class="biz-icon">🎓</div>
-            <h3>GD Goenka Public School</h3>
-            <p>Established under the Educational Trust, nurturing young minds with quality education &amp; modern infrastructure.</p>
-            <a href="education.html" class="biz-link" id="school-card-link">
-              Learn More
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
   <!-- ══════════════════════════════════════════════════════════
        LEGACY TIMELINE
   ══════════════════════════════════════════════════════════ -->
@@ -636,48 +797,256 @@
           <div class="timeline-content reveal-right">
             <div class="timeline-year">Generation IV</div>
             <h4 class="timeline-title">Modern Era</h4>
-            <p class="timeline-desc">Led by Shri Amit Kumar and Shri Sumit Kumar, the group expanded with Kalyan Jewellers, Kia, KTM, and Bajaj.</p>
+            <p class="timeline-desc">Led by Shri Amit Kumar and Shri Sumit Kumar, the group expanded with Yamuna Prasad Krishna Kumar Jewellers, Kia, KTM, and Bajaj.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
-
   <!-- ══════════════════════════════════════════════════════════
-       COMMUNITY
+       CORE VALUES SECTION
   ══════════════════════════════════════════════════════════ -->
-  <section class="community-section section" aria-label="Community initiatives">
-    <div class="community-bg" role="img" aria-label="Community CSR initiative"></div>
-    <div class="community-overlay"></div>
+  <section class="values-section cv-luxe section" aria-label="Core values">
     <div class="container">
-      <div class="community-content reveal-left">
-        <div class="section-label">Our Responsibility</div>
-        <h2>Giving Back to Our Community</h2>
-        <span class="gold-divider"></span>
-        <p>
-          We believe business success is only meaningful when it uplifts the community around us. 
-          The RBRYP Group is committed to social responsibility through education, environment, 
-          and local empowerment initiatives.
+      <div class="section-header text-center reveal">
+        <div class="section-label">Our Foundation</div>
+        <h2 class="section-title">Core Values That Drive Us</h2>
+        <span class="gold-divider center"></span>
+        <p class="section-desc">
+          Six values sit at the heart of everything we do — guiding every decision across our businesses and the communities we serve.
         </p>
-        <div class="community-pillars">
-          <div class="pillar-item">
-            <div class="pillar-icon">📚</div>
-            <div class="pillar-text"><strong>Education Scholarships</strong> — Supporting underprivileged students annually</div>
+      </div>
+
+      <div class="cv-flower reveal">
+        <div class="cv-halo"></div>
+        <div class="cv-orbit">
+          <div class="cv-spokes">
+            <span class="cv-spoke" style="--i:0"></span>
+            <span class="cv-spoke" style="--i:1"></span>
+            <span class="cv-spoke" style="--i:2"></span>
+            <span class="cv-spoke" style="--i:3"></span>
+            <span class="cv-spoke" style="--i:4"></span>
+            <span class="cv-spoke" style="--i:5"></span>
           </div>
-          <div class="pillar-item">
-            <div class="pillar-icon">🌳</div>
-            <div class="pillar-text"><strong>Green Initiatives</strong> — Tree plantation drives across the region</div>
+
+          <div class="cv-petal" style="--i:0">
+            <div class="cv-pcard">
+              <span class="cv-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>
+              </span>
+              <h4>Trust</h4>
+              <p>Built honestly over four generations and earned every single day.</p>
+            </div>
           </div>
-          <div class="pillar-item">
-            <div class="pillar-icon">🩺</div>
-            <div class="pillar-text"><strong>Health Camps</strong> — Free medical check-ups for local communities</div>
+          <div class="cv-petal" style="--i:1">
+            <div class="cv-pcard">
+              <span class="cv-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+              </span>
+              <h4>Excellence</h4>
+              <p>We strive to be the best in every product and every service.</p>
+            </div>
           </div>
-          <div class="pillar-item">
-            <div class="pillar-icon">🤲</div>
-            <div class="pillar-text"><strong>Skill Development</strong> — Vocational training for youth employment</div>
+          <div class="cv-petal" style="--i:2">
+            <div class="cv-pcard">
+              <span class="cv-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              </span>
+              <h4>Customer First</h4>
+              <p>The customer stays at the core of every decision we make.</p>
+            </div>
+          </div>
+          <div class="cv-petal" style="--i:3">
+            <div class="cv-pcard">
+              <span class="cv-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+              </span>
+              <h4>Integrity</h4>
+              <p>Honest, transparent and fair dealings in all that we do.</p>
+            </div>
+          </div>
+          <div class="cv-petal" style="--i:4">
+            <div class="cv-pcard">
+              <span class="cv-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h.01M9 12h.01M9 15h.01M9 18h.01"/></svg>
+              </span>
+              <h4>Community</h4>
+              <p>Rooted in Motihari — we grow with society, never above it.</p>
+            </div>
+          </div>
+          <div class="cv-petal" style="--i:5">
+            <div class="cv-pcard">
+              <span class="cv-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
+              </span>
+              <h4>Growth</h4>
+              <p>Continuously evolving while staying true to our heritage.</p>
+            </div>
           </div>
         </div>
-        <a href="contact.html" class="btn btn-primary" id="community-learn-more-btn">Learn More About CSR</a>
+
+        <div class="cv-center"><span>Our<br>Core<br>Values</span></div>
+      </div>
+    </div>
+  </section>
+  <!-- ══════════════════════════════════════════════════════════
+       LEADERSHIP SECTION
+  ══════════════════════════════════════════════════════════ -->
+  <section class="section" id="leadership" aria-label="Leadership team">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <div class="section-label">Our Leaders</div>
+        <h2 class="section-title">The People Behind the Legacy</h2>
+        <span class="gold-divider center"></span>
+        <p class="section-desc">Four generations of dedicated leaders who have shaped the RBRYP Group into what it is today.</p>
+      </div>
+      <div class="home-leadership-grid">
+        <div class="leader-card reveal delay-1">
+          <span class="leader-gen">Gen II</span>
+          <div class="leader-avatar">
+            <img src="assets/images/yamuna_prasad.jpeg" alt="Shri Yamuna Prasad" loading="lazy" />
+          </div>
+          <div class="leader-body">
+            <h4>Shri Yamuna Prasad</h4>
+            <div class="leader-role">Generation II</div>
+            <p>Took the legacy to new heights by expanding into the jewellery segment, giving the group a broader identity.</p>
+          </div>
+        </div>
+        <div class="leader-card reveal delay-2">
+          <div class="leader-avatar">
+            <img src="assets/images/krishna_kumar.webp" alt="Shri Krishna Kumar" loading="lazy" />
+          </div>
+          <div class="leader-body">
+            <h4>Shri Krishna Kumar</h4>
+            <div class="leader-role">Generation III</div>
+            <p>Diversified the group by establishing Rambhawan Ram Automobiles and the Educational Trust (GD Goenka Public School).</p>
+          </div>
+        </div>
+        <div class="leader-card reveal delay-3">
+          <div class="leader-avatar">
+            <img src="assets/images/amit_kumar.jpeg" alt="Shri Amit Kumar" loading="lazy" />
+          </div>
+          <div class="leader-body">
+            <h4>Shri Amit Kumar</h4>
+            <div class="leader-role">Generation IV</div>
+            <p>Carrying the legacy forward, bringing global brands such as Yamuna Prasad Krishna Kumar Jewellers, Kia, KTM &amp; Bajaj to the group.</p>
+          </div>
+        </div>
+        <div class="leader-card reveal delay-4">
+          <div class="leader-avatar">
+            <img src="assets/images/sumit_kumar.webp" alt="Shri Sumit Kumar" loading="lazy" />
+          </div>
+          <div class="leader-body">
+            <h4>Shri Sumit Kumar</h4>
+            <div class="leader-role">Generation IV</div>
+            <p>Scaling the group's businesses with strategic partnerships and a modern vision across every vertical.</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px;" class="reveal">
+        <a href="about.html#leadership" class="btn btn-outline">Meet the Full Team →</a>
+      </div>
+    </div>
+  </section>
+  <!-- ══════════════════════════════════════════════════════════
+       GIVING BACK TO COMMUNITY
+  ══════════════════════════════════════════════════════════ -->
+  <section class="giving-hero" aria-label="Giving back to society">
+    <div class="giving-hero-bg"></div>
+    <div class="giving-hero-overlay"></div>
+    <div class="container giving-hero-content reveal">
+      <div class="section-label">Our Responsibility</div>
+      <h2 class="section-title" style="color:#fff;">Giving Back to Society</h2>
+      <span class="gold-divider center"></span>
+      <p>From our very founding, Shri Rambhawan Ram believed that a business must grow <em>together</em> with the community around it. Seventy years on, that spirit is the heartbeat of everything we do.</p>
+      <div class="giving-stat-row">
+        <div class="giving-stat reveal delay-1">
+          <div class="giving-stat-num">5,000+</div>
+          <div class="giving-stat-label">Students Supported</div>
+        </div>
+        <div class="giving-stat reveal delay-2">
+          <div class="giving-stat-num">12+</div>
+          <div class="giving-stat-label">Community Programmes</div>
+        </div>
+        <div class="giving-stat reveal delay-3">
+          <div class="giving-stat-num">₹2 Cr+</div>
+          <div class="giving-stat-label">CSR Investment</div>
+        </div>
+        <div class="giving-stat reveal delay-4">
+          <div class="giving-stat-num">30+</div>
+          <div class="giving-stat-label">Villages Impacted</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       IMPACT PILLARS
+  ══════════════════════════════════════════════════════════ -->
+  <section class="giving-impact" aria-label="Community impact pillars">
+    <div class="container">
+      <!-- Header -->
+      <div class="giving-impact-head reveal">
+        <div>
+          <div class="section-label">Impact Pillars</div>
+          <h2>Focused work where our community feels it most</h2>
+        </div>
+        <p>Our social responsibility work is shaped around practical, local needs: education, health,
+        livelihoods, environmental care, women-led progress, and rapid support during emergencies.</p>
+      </div>
+
+      <!-- Simple 3-col photo grid -->
+      <div class="pillar-grid">
+
+        <div class="pillar-grid-card reveal">
+          <img src="assets/images/GDGORANKA.webp" alt="Education" loading="lazy" />
+          <div class="pillar-grid-label">
+            <span class="pillar-grid-kicker">Education</span>
+            <h3>Education for All</h3>
+          </div>
+        </div>
+
+        <div class="pillar-grid-card reveal delay-1">
+          <img src="assets/images/community_bg.jpeg" alt="Health" loading="lazy" />
+          <div class="pillar-grid-label">
+            <span class="pillar-grid-kicker">Health</span>
+            <h3>Health &amp; Welfare</h3>
+          </div>
+        </div>
+
+        <div class="pillar-grid-card reveal delay-2">
+          <img src="assets/images/old_city.webp" alt="Livelihoods" loading="lazy" />
+          <div class="pillar-grid-label">
+            <span class="pillar-grid-kicker">Livelihoods</span>
+            <h3>Community Development</h3>
+          </div>
+        </div>
+
+        <div class="pillar-grid-card reveal delay-1">
+          <img src="assets/images/environmental_care.jpg" alt="Environment" loading="lazy" />
+          <div class="pillar-grid-label">
+            <span class="pillar-grid-kicker">Environment</span>
+            <h3>Environmental Care</h3>
+          </div>
+        </div>
+
+        <div class="pillar-grid-card reveal delay-2">
+          <img src="assets/images/leadership_bg.png" alt="Empowerment" loading="lazy" />
+          <div class="pillar-grid-label">
+            <span class="pillar-grid-kicker">Empowerment</span>
+            <h3>Women Empowerment</h3>
+          </div>
+        </div>
+
+        <div class="pillar-grid-card reveal delay-3">
+          <img src="assets/images/Bapudham-Railway-Station3-1.jpg.jpeg" alt="Disaster Relief" loading="lazy" />
+          <div class="pillar-grid-label">
+            <span class="pillar-grid-kicker">Relief</span>
+            <h3>Disaster Relief</h3>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -698,7 +1067,7 @@
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
           <p class="testimonial-text">
-            "We bought our wedding jewellery from Ram Bhanwan Jewellers and the experience was truly royal. 
+            "We bought our wedding jewellery from Ram Bhawan Jewellers and the experience was truly royal. 
             The designs were stunning and the staff treated us like family."
           </p>
           <div class="testimonial-author">
@@ -744,7 +1113,6 @@
       </div>
     </div>
   </section>
-
   <!-- ══════════════════════════════════════════════════════════
        CTA BANNER
   ══════════════════════════════════════════════════════════ -->
@@ -770,9 +1138,9 @@
       <div class="footer-top">
         <div class="footer-brand">
           <div class="nav-logo" style="margin-bottom:0">
-            <div class="logo-emblem">R</div>
+            <img src="assets/logos/logo.png" alt="Logo" class="logo-emblem">
             <div class="logo-text">
-              <span class="logo-name">Ram Bhanwan Ram<br>Yamuna Prasad Group</span>
+              <span class="logo-name">Ram Bhawan Ram<br>Yamuna Prasad Group</span>
               <span class="logo-tagline">A Legacy of Trust Since 1956</span>
             </div>
           </div>
@@ -781,22 +1149,23 @@
             Fashion, Automobiles, Hospitality and Education since 1956.
           </p>
           <div class="social-links">
-            <a href="#" class="social-link" aria-label="Facebook">f</a>
-            <a href="#" class="social-link" aria-label="Instagram">📸</a>
-            <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
-            <a href="#" class="social-link" aria-label="YouTube">▶</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/rbr_group916" target="_blank" rel="noopener" aria-label="Instagram" class="social-link" aria-label="Instagram">📸</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="social-link" aria-label="Twitter">𝕏</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">▶</a>
           </div>
         </div>
 
         <div class="footer-col">
           <h5>Our Businesses</h5>
           <ul class="footer-links">
-            <li><a href="jewellery.html">💍 Kalyan Jewellers</a></li>
-            <li><a href="clothing.html">👔 Clothing & Fashion</a></li>
-            <li><a href="automobiles.html">🚗 Kia Motors</a></li>
-            <li><a href="automobiles.html#two-wheeler">🛵 KTM & Bajaj</a></li>
-            <li><a href="hospitality.html">🏨 Hotel & Banquet</a></li>
-            <li><a href="education.html">🎓 GD Goenka School</a></li>
+            <li><a href="ykj.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="m12 22 4-13-3-6"/><path d="M12 22 8 9l3-6"/><path d="M2 9h20"/></svg></span>Yamuna Prasad Krishna Kumar Jewellers</a></li>
+            <li><a href="clothing.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23Z"/></svg></span>Clothing & Fashion</a></li>
+            <li><a href="kia.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8A3 3 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span>Kia Motors</a></li>
+            <li><a href="bajaj.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg></span>KTM & Bajaj</a></li>
+            <li><a href="rbr-resort.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></span>Hotel & Banquet</a></li>
+            <li><a href="the-family-bawarchi.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h0a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span>The Family Bawarchi Restaurant</a></li>
+            <li><a href="gdgoenka.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>GD Goenka School</a></li>
           </ul>
         </div>
 
@@ -806,7 +1175,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="businesses.html">Our Businesses</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="investors.html">Partner With Us</a></li><li><a href="contact.html">Contact Us</a></li>
           </ul>
         </div>
 
@@ -814,11 +1183,11 @@
           <h5>Contact Us</h5>
           <div class="footer-contact-item">
             <span>📍</span>
-            <span>RBRYP House, Main Market Road,<br>City Centre, India</span>
+            <span>Main Road, Bajaj Patti,<br>Motihari — 845401, Bihar</span>
           </div>
           <div class="footer-contact-item">
             <span>📞</span>
-            <span>+91 98765 43210</span>
+            <span>+91 96610 04200</span>
           </div>
           <div class="footer-contact-item">
             <span>✉️</span>
@@ -832,11 +1201,11 @@
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">© 2025 Ram Bhanwan Ram Yamuna Prasad Group. All rights reserved.</p>
+        <p class="footer-copy">© 2025 Ram Bhawan Ram Yamuna Prasad Group. All rights reserved.</p>
         <nav class="footer-legal" aria-label="Legal links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Sitemap</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="sitemap.html">Sitemap</a>
         </nav>
       </div>
     </div>

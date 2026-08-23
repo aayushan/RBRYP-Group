@@ -149,26 +149,71 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ── FORM SUBMIT ─────────────────────────────────────────── */
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+  // Paste your Google Apps Script Web App URL here (see google-apps-script.gs for setup).
+  const GOOGLE_SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyI0LZLWmpZHp4Huc1gaJUmJbIjff3ByyGHV3eEQfrmZPyh7nuVays37VgO8I9VtZ9bCQ/exec';
+
+  // Business name for this page, used to tag every submission in the sheet.
+  const CURRENT_BUSINESS = document.title.split('|')[0].trim();
+
+  document.querySelectorAll('#contactForm, #partnerForm, #careerForm, #bpForm').forEach((form) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const btn = contactForm.querySelector('[type="submit"]');
+      const btn = form.querySelector('[type="submit"]');
       const originalText = btn.textContent;
+      const doneText = form.id === 'partnerForm' ? '✓ Inquiry Sent!' : form.id === 'careerForm' ? '✓ Application Sent!' : form.id === 'bpForm' ? '✓ Enquiry Sent!' : '✓ Message Sent!';
+      const errorText = 'Something went wrong — please call us instead.';
+
+      const fields = {};
+      new FormData(form).forEach((value, key) => { fields[key] = value; });
+
       btn.textContent = 'Sending…';
       btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = '✓ Message Sent!';
+
+      const showSuccess = () => {
+        btn.textContent = doneText;
         btn.style.background = 'linear-gradient(135deg, #226C3F, #2E8B57)';
-        contactForm.reset();
+        form.reset();
         setTimeout(() => {
           btn.textContent = originalText;
           btn.style.background = '';
           btn.disabled = false;
         }, 3500);
-      }, 1500);
+      };
+      const showError = () => {
+        btn.textContent = errorText;
+        btn.style.background = 'linear-gradient(135deg, #A02020, #C0392B)';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      };
+
+      if (!GOOGLE_SHEET_WEBHOOK_URL || GOOGLE_SHEET_WEBHOOK_URL.indexOf('PASTE_YOUR') === 0) {
+        // Webhook not configured yet — fall back to the old fake-success behavior
+        // so the site doesn't look broken while setup is in progress.
+        setTimeout(showSuccess, 1200);
+        return;
+      }
+
+      // URLSearchParams sends application/x-www-form-urlencoded, which Apps Script
+      // handles reliably via e.parameter (unlike a JSON/text-plain body, which
+      // triggers a Google-side redirect bug that breaks the request).
+      const params = new URLSearchParams();
+      params.set('_business', CURRENT_BUSINESS);
+      params.set('_formType', form.id);
+      params.set('_pageUrl', window.location.href);
+      Object.entries(fields).forEach(([key, value]) => params.set(key, value));
+
+      fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Apps Script doesn't return CORS headers; we can't read the response, only whether the request succeeded
+        body: params,
+      })
+        .then(showSuccess)
+        .catch(showError);
     });
-  }
+  });
 
   /* ── HERO TYPED TEXT ─────────────────────────────────────── */
   const typedEl = document.getElementById('typedText');
@@ -220,6 +265,19 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.transform = '';
       });
     });
+  }
+
+  /* ── BRANDS MARQUEE (CSS animation — pause on hover handled in CSS) ── */
+  // The infinite scroll is driven by @keyframes marquee-scroll in CSS.
+  // No JS needed for the animation itself. Touch-pause support below.
+  const brandsTrack = document.getElementById('brandsTrack');
+  if (brandsTrack) {
+    brandsTrack.addEventListener('touchstart', () => {
+      brandsTrack.style.animationPlayState = 'paused';
+    }, { passive: true });
+    brandsTrack.addEventListener('touchend', () => {
+      brandsTrack.style.animationPlayState = 'running';
+    }, { passive: true });
   }
 
 });

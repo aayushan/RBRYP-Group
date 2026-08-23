@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="assets/logos/logo.png" />
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clothing & Fashion | RBRYP Group</title>
-  <meta name="description" content="RBRYP Fashion House — Curated ethnic wear, western fusion and designer collections for every occasion. Visit our showroom for the best in fashion." />
-  <link rel="stylesheet" href="css/style.css" /><link rel="stylesheet" href="css/responsive.css" />
+  <title>Saubhagyam Studio | Clothing &amp; Fashion | RBRYP Group</title>
+  <meta name="description" content="Saubhagyam Studio — Curated ethnic wear, western fusion and designer collections for every occasion. Visit our showroom in Motihari for the best in fashion." />
+  <link rel="stylesheet" href="css/style.css?v=32" /><link rel="stylesheet" href="css/responsive.css?v=2" />
   <style>
+    body { --brand:#8B1E3F; }
     .categories-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
     .cat-card { border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); background:var(--white); transition:var(--transition-slow); cursor:pointer; }
     .cat-card:hover { transform:translateY(-10px); box-shadow:var(--shadow-lg); }
@@ -26,21 +28,68 @@
 <body>
   <nav class="navbar scrolled" id="navbar">
     <div class="navbar-inner">
-      <a href="index.html" class="nav-logo"><div class="logo-emblem">R</div>        <div class="logo-text"><span class="logo-name">Ram Bhanwan Ram<br>Yamuna Prasad Group</span><span class="logo-tagline">A Legacy of Trust Since 1956</span></div>
+      <a href="index.html" class="nav-logo"><img src="assets/logos/logo.png" alt="Logo" class="logo-emblem">        <div class="logo-text"><span class="logo-name">Ram Bhawan Ram<br>Yamuna Prasad Group</span><span class="logo-tagline">A Legacy of Trust Since 1956</span></div>
       </a>
       <ul class="nav-menu">
         <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
         <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
         <li class="nav-item"><a href="businesses.html" class="nav-link active">Our Businesses <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
-          <div class="dropdown">
-            <div class="dropdown-item"><a href="jewellery.html"><div class="dropdown-icon">💍</div>Kalyan Jewellers</a></div>
-            <div class="dropdown-item"><a href="clothing.html"><div class="dropdown-icon">👔</div>Clothing & Fashion</a></div>
-            <div class="dropdown-item"><a href="automobiles.html"><div class="dropdown-icon">🚗</div>Kia Motors</a></div>
-            <div class="dropdown-item"><a href="automobiles.html#two-wheeler"><div class="dropdown-icon">🛵</div>KTM & Bajaj</a></div>
-            <div class="dropdown-item"><a href="hospitality.html"><div class="dropdown-icon">🏨</div>Hotel & Banquet</a></div>
-            <div class="dropdown-item"><a href="education.html"><div class="dropdown-icon">🎓</div>GD Goenka School</a></div>
+          <div class="dropdown-mega">
+            <div class="dd-col" style="--dc:#7A1F1F">
+              <div class="dd-col-head">
+                <div class="dd-col-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="m12 22 4-13-3-6"/><path d="M12 22 8 9l3-6"/><path d="M2 9h20"/></svg></div>
+                <h6>Jewellery</h6>
+                <div class="dd-col-tag">Timeless elegance, crafted with trust since generations.</div>
+                <span class="dd-underline"></span>
+              </div>
+              <a href="kalyan.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/kalyan_logo.svg" alt="Kalyan" loading="lazy"></div><div class="dd-item-text"><span class="din">Kalyan Jewellers</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="ykj.html" class="dd-item"><div class="dd-item-logo" style="background:#8B1E3F;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">YKJ</div><div class="dd-item-text"><span class="din">Yamuna Prasad Krishna Kumar Jewellers</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="clothing.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/saubhagyamStudio.jpeg" alt="Saubhagyam Studio" loading="lazy"></div><div class="dd-item-text"><span class="din">Saubhagyam Studio</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+            <div class="dd-col" style="--dc:#003B7A">
+              <div class="dd-col-head">
+                <div class="dd-col-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8A3 3 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div>
+                <h6>Automobiles</h6>
+                <div class="dd-col-tag">Driven by performance, powered by trust.</div>
+                <span class="dd-underline"></span>
+              </div>
+              <a href="kia.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/kia_logo.svg" alt="Kia" loading="lazy"></div><div class="dd-item-text"><span class="din">Kia</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="bajaj.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/bajaj_logo.svg" alt="Bajaj" loading="lazy"></div><div class="dd-item-text"><span class="din">Bajaj</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="ktm.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/ktm_logo.svg" alt="KTM" loading="lazy"></div><div class="dd-item-text"><span class="din">KTM</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="triumph.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/triumph_logo.png" alt="Triumph" loading="lazy"></div><div class="dd-item-text"><span class="din">Triumph</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="chetak.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/chetak_logo.jpeg" alt="Chetak" loading="lazy"></div><div class="dd-item-text"><span class="din">Chetak</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+            <div class="dd-col" style="--dc:#2E7D32">
+              <div class="dd-col-head">
+                <div class="dd-col-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
+                <h6>Education</h6>
+                <div class="dd-col-tag">Nurturing future leaders with world-class education.</div>
+                <span class="dd-underline"></span>
+              </div>
+              <a href="gdgoenka.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/gdgoenka_logo.svg" alt="GD Goenka" loading="lazy"></div><div class="dd-item-text"><span class="din">GD Goenka Public School</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="study-oasis.html" class="dd-item"><div class="dd-item-logo" style="background:#2E7D32;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">SO</div><div class="dd-item-text"><span class="din">Study Oasis Hostel</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+            <div class="dd-col" style="--dc:#9C6B30">
+              <div class="dd-col-head">
+                <div class="dd-col-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div>
+                <h6>Hospitality</h6>
+                <div class="dd-col-tag">Hospitality that feels like home.</div>
+                <span class="dd-underline"></span>
+              </div>
+              <a href="rbr-resort.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/rbr_resort_logo.png" alt="Ram Bhawan Ram Resort" loading="lazy"></div><div class="dd-item-text"><span class="din">Ram Bhawan Ram Resort</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="rbr-business-center.html" class="dd-item"><div class="dd-item-logo" style="background:#16294D;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">RBC</div><div class="dd-item-text"><span class="din">RBR Business Center</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="the-family-bawarchi.html" class="dd-item"><div class="dd-item-logo" style="background:#8A5A2B;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">FB</div><div class="dd-item-text"><span class="din">The Family Bawarchi</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="hotel-atithi.html" class="dd-item"><div class="dd-item-logo" style="background:#7A2E2E;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">HA</div><div class="dd-item-text"><span class="din">Hotel Atithi</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+            <div class="dd-promo" style="background-image:linear-gradient(180deg, rgba(11,22,40,0.15), rgba(11,22,40,0.82)), url('assets/images/rbrbussinessCenterHorizontal.png')">
+              <div class="dd-promo-eyebrow">One Group. Many Ventures.</div>
+              <h5>Building a stronger tomorrow, together.</h5>
+              <a href="businesses.html" class="dd-promo-cta">Explore All Businesses <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
           </div>
         </li>
+        <li class="nav-item"><a href="investors.html" class="nav-link">Partner With Us</a></li>
+        <li class="nav-item"><a href="careers.html" class="nav-link">Careers</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
       <a href="contact.html" class="btn btn-primary nav-cta">Get in Touch</a>
@@ -50,28 +99,32 @@
   <div class="mobile-overlay" id="mobileOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html" class="mobile-nav-link">Home</a><a href="about.html" class="mobile-nav-link">About Us</a>
-    <a href="businesses.html" class="mobile-nav-link">Our Businesses</a><a href="contact.html" class="mobile-nav-link">Contact</a>
+    <a href="businesses.html" class="mobile-nav-link">Our Businesses</a><a href="investors.html" class="mobile-nav-link">Partner With Us</a>
+    <a href="careers.html" class="mobile-nav-link">Careers</a>
+    <a href="contact.html" class="mobile-nav-link">Contact</a>
     <div style="margin-top:32px"><a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Get in Touch</a></div>
   </div>
 
-  <section class="page-hero" style="background:linear-gradient(135deg,#3A0A0A,#8B1A1A 50%,#2C1B4A 100%)">
+  <section class="page-hero" style="background: linear-gradient(rgba(8,12,20,0.74), rgba(8,12,20,0.80)), url('assets/images/gallery/saubhagyam/8.jpg') center/cover no-repeat">
     <div class="container page-hero-content">
-      <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="businesses.html">Businesses</a><span>/</span><span>Clothing & Fashion</span></nav>
-      <div style="font-size:3rem;margin-bottom:16px;">👔</div>
-      <h1>RBRYP Fashion House</h1>
-      <p>Curated ethnic wear, western fusion &amp; designer collections for every occasion — from festive celebrations to everyday elegance.</p>
+      <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="businesses.html">Businesses</a><span>/</span><span>Saubhagyam Studio</span></nav>
+      <div style="display:inline-block;margin-bottom:16px;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.25);"><img src="assets/images/saubhagyamStudio.jpeg" alt="Saubhagyam Studio" style="width:64px;height:64px;object-fit:cover;display:block;" /></div>
+      <h1>Saubhagyam Studio</h1>
+      <p>Our own fashion brand — curated ethnic wear, western fusion &amp; designer collections for every occasion, from festive celebrations to everyday elegance.</p>
     </div>
   </section>
+
+  <section class="bp-quickbar"><div class="container"><div class="qb-item"><div class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="ql">Address</div><div class="qv">Main Rd, opposite Punjab National Bank, Rajendra Nagar, Motihari — 845401</div></div></div><div class="qb-item"><div class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="ql">Phone</div><div class="qv"><a href="tel:+919431203652">+91 94312 03652</a></div></div></div><div class="qb-item"><div class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><div class="ql">Hours</div><div class="qv">Mon – Sat: 10 AM – 8 PM</div></div></div></div></section>
 
   <!-- INTRO -->
   <section class="section bg-ivory">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center">
+      <div class="split-content-grid" style="display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center">
         <div class="reveal-left">
           <div class="section-label">Our Store</div>
           <h2>Dress for Every Moment, Every Season</h2>
           <span class="gold-divider"></span>
-          <p style="color:var(--gray-600);margin-bottom:16px;">RBRYP Fashion House brings you an extensive range of clothing that celebrates both heritage and modernity. Established in 1990, we have been dressing the region's people for weddings, festivals, offices, and casual outings with the finest fabrics and designs.</p>
+          <p style="color:var(--gray-600);margin-bottom:16px;">Saubhagyam Studio is the group's own fashion brand, bringing an extensive range of clothing that celebrates both heritage and modernity. We've been dressing the region's people for weddings, festivals, offices, and casual outings with the finest fabrics and designs.</p>
           <p style="color:var(--gray-600);margin-bottom:32px;">Our store stocks top national brands alongside exclusive in-house collections — from elegant sarees and lehengas to stylish western wear, formal suits, and kids' clothing. We cater to men, women and children of all ages.</p>
           <div style="display:flex;gap:16px;flex-wrap:wrap">
             <a href="contact.html" class="btn btn-primary">Visit Our Store</a>
@@ -79,8 +132,27 @@
           </div>
         </div>
         <div class="reveal-right">
-          <div style="background:linear-gradient(135deg,#3A0A0A,#8B1A1A);border-radius:var(--radius-lg);height:340px;display:flex;align-items:center;justify-content:center;font-size:8rem;box-shadow:var(--shadow-lg);">👘</div>
+          <img src="assets/images/gallery/saubhagyam/1.jpg" alt="Saubhagyam Studio showroom" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);width:100%;height:340px;object-fit:cover;" loading="lazy" />
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section bg-ivory">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <div class="section-label">Gallery</div>
+        <h2 class="section-title">A Look Inside Our Store</h2>
+        <span class="gold-divider center"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+        <img src="assets/images/gallery/saubhagyam/2.jpg" alt="Saubhagyam Studio" loading="lazy" style="width:100%;height:220px;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)" />
+        <img src="assets/images/gallery/saubhagyam/3.jpg" alt="Saubhagyam Studio" loading="lazy" style="width:100%;height:220px;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)" />
+        <img src="assets/images/gallery/saubhagyam/4.jpg" alt="Saubhagyam Studio" loading="lazy" style="width:100%;height:220px;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)" />
+        <img src="assets/images/gallery/saubhagyam/5.jpg" alt="Saubhagyam Studio" loading="lazy" style="width:100%;height:220px;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)" />
+        <img src="assets/images/gallery/saubhagyam/6.jpg" alt="Saubhagyam Studio" loading="lazy" style="width:100%;height:220px;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)" />
+        <img src="assets/images/gallery/saubhagyam/7.jpg" alt="Saubhagyam Studio" loading="lazy" style="width:100%;height:220px;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)" />
       </div>
     </div>
   </section>
@@ -95,27 +167,27 @@
       </div>
       <div class="categories-grid">
         <div class="cat-card reveal delay-1">
-          <div class="cat-img" style="background:linear-gradient(135deg,#4A0A2A,#8B1A5A)">🥻</div>
+          <div class="cat-img" style="background: linear-gradient(135deg, var(--navy-mid), var(--navy))">🥻</div>
           <div class="cat-body"><h4>Ethnic Wear — Women</h4><p>Sarees, lehengas, salwar suits, kurtas and dupattas in silk, cotton, georgette and more.</p></div>
         </div>
         <div class="cat-card reveal delay-2">
-          <div class="cat-img" style="background:linear-gradient(135deg,#0B1628,#1A3060)">🎩</div>
+          <div class="cat-img" style="background: linear-gradient(135deg, var(--navy-mid), var(--navy))">🎩</div>
           <div class="cat-body"><h4>Ethnic Wear — Men</h4><p>Sherwanis, kurta pyjamas, dhotis and traditional attire for weddings &amp; festivals.</p></div>
         </div>
         <div class="cat-card reveal delay-3">
-          <div class="cat-img" style="background:linear-gradient(135deg,#1A1A2E,#3A3A6E)">👗</div>
+          <div class="cat-img" style="background: linear-gradient(135deg, var(--navy-mid), var(--navy))">👗</div>
           <div class="cat-body"><h4>Western Wear</h4><p>Dresses, jeans, tops, jackets &amp; co-ords for a modern, confident look.</p></div>
         </div>
         <div class="cat-card reveal delay-4">
-          <div class="cat-img" style="background:linear-gradient(135deg,#1A2A0A,#3A6A0A)">💼</div>
+          <div class="cat-img" style="background: linear-gradient(135deg, var(--navy-mid), var(--navy))">💼</div>
           <div class="cat-body"><h4>Formal & Corporate</h4><p>Professional suits, trousers, shirts &amp; blazers — sharp and sophisticated.</p></div>
         </div>
         <div class="cat-card reveal delay-5">
-          <div class="cat-img" style="background:linear-gradient(135deg,#2A1A0A,#6A4A0A)">👶</div>
+          <div class="cat-img" style="background: linear-gradient(135deg, var(--navy-mid), var(--navy))">👶</div>
           <div class="cat-body"><h4>Kids' Wear</h4><p>Adorable and comfortable clothing for children — from newborns to teenagers.</p></div>
         </div>
         <div class="cat-card reveal delay-6">
-          <div class="cat-img" style="background:linear-gradient(135deg,#0A2A2A,#0A6A6A)">💒</div>
+          <div class="cat-img" style="background: linear-gradient(135deg, var(--navy-mid), var(--navy))">💒</div>
           <div class="cat-body"><h4>Bridal &amp; Wedding</h4><p>Complete bridal outfits and wedding guest collections for the most special occasions.</p></div>
         </div>
       </div>
@@ -127,7 +199,7 @@
     <div class="container">
       <div class="section-header text-center reveal">
         <div class="section-label">Why Choose Us</div>
-        <h2 class="section-title">The RBRYP Fashion Difference</h2>
+        <h2 class="section-title">The Saubhagyam Studio Difference</h2>
         <span class="gold-divider center"></span>
       </div>
       <div class="why-grid" style="max-width:860px;margin:0 auto">
@@ -139,8 +211,31 @@
     </div>
   </section>
 
+  <!-- LOCATION -->
+  <section class="section bg-ivory">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <div class="section-label">Visit Us</div>
+        <h2 class="section-title">Outlet &amp; Location</h2>
+        <span class="gold-divider center"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch">
+        <div class="reveal-left" style="background:var(--white);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-sm)">
+          <h3 style="margin-bottom:20px">Saubhagyam Studio — Showroom</h3>
+          <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:18px"><div class="why-icon-box">📍</div><div><div style="font-family:'Outfit',sans-serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-600)">Address</div><div style="color:var(--navy);font-size:0.95rem">Main Rd, opposite Punjab National Bank,<br>Rajendra Nagar, Motihari — 845401, Bihar</div></div></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:18px"><div class="why-icon-box">📞</div><div><div style="font-family:'Outfit',sans-serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-600)">Phone</div><div style="color:var(--navy);font-size:0.95rem"><a href="tel:+919431203652">+91 94312 03652</a></div></div></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:18px"><div class="why-icon-box">✉️</div><div><div style="font-family:'Outfit',sans-serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-600)">Email</div><div style="color:var(--navy);font-size:0.95rem">rbryp52260@gmail.com</div></div></div>
+          <div style="display:flex;gap:14px;align-items:flex-start"><div class="why-icon-box">🕐</div><div><div style="font-family:'Outfit',sans-serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-600)">Hours</div><div style="color:var(--navy);font-size:0.95rem">Mon – Sat: 10:00 AM – 8:00 PM</div></div></div>
+        </div>
+        <div class="reveal-right" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);min-height:360px">
+          <iframe src="https://maps.google.com/maps?q=Main%20Rd%2C%20opposite%20Punjab%20National%20Bank%2C%20Rajendra%20Nagar%2C%20Motihari%2C%20Bihar%20845401&z=16&output=embed" loading="lazy" title="Saubhagyam Studio, Motihari" referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:100%;border:0"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="cta-banner"><div class="container">
-    <h2 class="reveal">Step Into the World of RBRYP Fashion</h2>
+    <h2 class="reveal">Step Into the World of Saubhagyam Studio</h2>
     <p class="reveal">Visit our showroom to explore thousands of designs. Our stylists are ready to help you find the perfect outfit.</p>
     <div class="cta-buttons reveal">
       <a href="contact.html" class="btn btn-primary btn-lg">Visit Our Store</a>
@@ -149,11 +244,11 @@
   </div></section>
 
   <footer class="footer"><div class="container"><div class="footer-top">
-    <div class="footer-brand"><div class="nav-logo" style="margin-bottom:0"><div class="logo-emblem">R</div><div class="logo-text"><span class="logo-name">Ram Bhanwan Ram<br>Yamuna Prasad Group</span><span class="logo-tagline">A Legacy of Trust Since 1956</span></div></div><p class="footer-desc">A trusted multi-sector business group since 1956.</p><div class="social-links"><a href="#" class="social-link">f</a><a href="#" class="social-link">📸</a><a href="#" class="social-link">𝕏</a></div></div>
-    <div class="footer-col"><h5>Our Businesses</h5><ul class="footer-links"><li><a href="jewellery.html">💍 Kalyan Jewellers</a></li><li><a href="clothing.html">👔 Clothing</a></li><li><a href="automobiles.html">🚗 Kia Motors</a></li><li><a href="automobiles.html#two-wheeler">🛵 KTM & Bajaj</a></li><li><a href="hospitality.html">🏨 Hotel & Banquet</a></li><li><a href="education.html">🎓 GD Goenka School</a></li></ul></div>
-    <div class="footer-col"><h5>Quick Links</h5><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
-    <div class="footer-col"><h5>Contact</h5><div class="footer-contact-item"><span>📞</span><span>+91 65432 10987</span></div><div class="footer-contact-item"><span>✉️</span><span>fashion@rbrypgroup.in</span></div></div>
-  </div><div class="footer-bottom"><p class="footer-copy">© 2025 Ram Bhanwan Ram Yamuna Prasad Group. All rights reserved.</p></div></div></footer>
+    <div class="footer-brand"><div class="nav-logo" style="margin-bottom:0"><img src="assets/logos/logo.png" alt="Logo" class="logo-emblem"><div class="logo-text"><span class="logo-name">Ram Bhawan Ram<br>Yamuna Prasad Group</span><span class="logo-tagline">A Legacy of Trust Since 1956</span></div></div><p class="footer-desc">A trusted multi-sector business group since 1956.</p><div class="social-links"><a href="https://facebook.com" target="_blank" rel="noopener" class="social-link">f</a><a href="https://www.instagram.com/rbr_group916" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">📸</a><a href="https://twitter.com" target="_blank" rel="noopener" class="social-link">𝕏</a></div></div>
+    <div class="footer-col"><h5>Our Businesses</h5><ul class="footer-links"><li><a href="ykj.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="m12 22 4-13-3-6"/><path d="M12 22 8 9l3-6"/><path d="M2 9h20"/></svg></span>Yamuna Prasad Krishna Kumar Jewellers</a></li><li><a href="clothing.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23Z"/></svg></span>Saubhagyam Studio</a></li><li><a href="kia.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8A3 3 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span>Kia Motors</a></li><li><a href="bajaj.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg></span>KTM & Bajaj</a></li><li><a href="rbr-resort.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></span>Hotel & Banquet</a></li><li><a href="gdgoenka.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>GD Goenka School</a></li></ul></div>
+    <div class="footer-col"><h5>Quick Links</h5><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="investors.html">Partner With Us</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    <div class="footer-col"><h5>Contact</h5><div class="footer-contact-item"><span>📞</span><span>+91 94312 03652</span></div><div class="footer-contact-item"><span>✉️</span><span>rbryp52260@gmail.com</span></div></div>
+  </div><div class="footer-bottom"><p class="footer-copy">© 2025 Ram Bhawan Ram Yamuna Prasad Group. All rights reserved.</p></div></div></footer>
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
   <script src="js/main.js"></script>
 </body>
