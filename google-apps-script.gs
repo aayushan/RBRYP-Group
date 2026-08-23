@@ -16,18 +16,33 @@
  * to take effect: Deploy → Manage deployments → pencil icon → Version: New
  * version → Deploy. Just saving the file does NOT update the live URL.
  *
- * Every submission — from any form, on any brand page — lands as one row in the
- * sheet's first tab. Columns are created automatically the first time a new
- * field name is seen, so nothing needs to be pre-configured.
+ * Submissions are routed to different tabs in the same spreadsheet depending
+ * on which form was submitted:
+ *   - contactForm  → "Contact" tab
+ *   - careerForm   → "Careers" tab
+ *   - partnerForm  → "Investors" tab
+ *   - bpForm (every brand page's enquiry form) → "Enquiries" tab
+ * Each tab is created automatically the first time a submission for it comes
+ * in, and columns are created automatically the first time a new field name
+ * is seen, so nothing needs to be pre-configured.
  */
 
+var SHEET_NAMES = {
+  contactForm: 'Contact',
+  careerForm: 'Careers',
+  partnerForm: 'Investors',
+  bpForm: 'Enquiries',
+};
+
 function doPost(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
   var params = e.parameter || {};
 
   var business = params['_business'] || '';
   var formType = params['_formType'] || '';
   var pageUrl = params['_pageUrl'] || '';
+
+  var sheetName = SHEET_NAMES[formType] || 'Enquiries';
+  var sheet = getOrCreateSheet(sheetName);
 
   var fixedCols = ['Timestamp', 'Business', 'Form Type', 'Page URL'];
   var incomingKeys = Object.keys(params).filter(function (k) {
@@ -63,4 +78,13 @@ function doPost(e) {
 
   return ContentService.createTextOutput(JSON.stringify({ result: 'success' }))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+function getOrCreateSheet(name) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName(name);
+  if (!sheet) {
+    sheet = ss.insertSheet(name);
+  }
+  return sheet;
 }
