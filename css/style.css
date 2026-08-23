@@ -2011,6 +2011,11 @@ p  { color: var(--gray-600); line-height: 1.8; }
   font-family:'Outfit',sans-serif; font-size:0.62rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
   padding:4px 9px; border-radius:20px; }
 
+/* social feeds */
+.social-feeds-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; margin-top:20px; }
+.social-feeds-grid iframe { display:block; width:100%; box-shadow: var(--shadow-sm); }
+@media (max-width:768px){ .social-feeds-grid { grid-template-columns:1fr; } }
+
 /* outlet + map */
 .bp-outlet-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:stretch; }
 .bp-outlet-card { background:#fff; border-radius: var(--radius-lg); padding:40px; box-shadow: var(--shadow-sm); }
