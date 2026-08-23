@@ -2061,10 +2061,10 @@ p  { color: var(--gray-600); line-height: 1.8; }
 /* ── Mega dropdown for multi-brand nav ── */
 .nav-item .dropdown-mega {
   position:absolute; top:100%; left:50%; transform: translateX(-50%) translateY(10px);
-  display:grid; grid-template-columns: repeat(4, minmax(190px,1fr)) 280px; gap:0 34px;
+  display:grid; grid-template-columns: repeat(5, minmax(150px,1fr)) 260px; gap:0 28px;
   align-items:stretch;
   background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
-  padding:28px 32px; min-width:1040px; opacity:0; visibility:hidden; transition: var(--transition); z-index:200;
+  padding:28px 32px; min-width:1120px; opacity:0; visibility:hidden; transition: var(--transition); z-index:200;
 }
 .nav-item:hover .dropdown-mega { opacity:1; visibility:visible; transform: translateX(-50%) translateY(0); }
 
@@ -2117,7 +2117,7 @@ p  { color: var(--gray-600); line-height: 1.8; }
 .dd-promo-cta svg { width:14px; height:14px; }
 .dd-promo-cta:hover { background: var(--gold-light); color: var(--navy); }
 
-@media (max-width:1200px){ .nav-item .dropdown-mega{ grid-template-columns: repeat(4, minmax(170px,1fr)); min-width:880px; } .dd-promo{ display:none; } }
+@media (max-width:1200px){ .nav-item .dropdown-mega{ grid-template-columns: repeat(5, minmax(150px,1fr)); min-width:960px; } .dd-promo{ display:none; } }
 @media (max-width:1024px){ .nav-item .dropdown-mega{ display:none; } }
 
 /* ── Multi-brand hub (global, used on home + businesses) ── */
