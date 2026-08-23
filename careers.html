@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="assets/logos/logo.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers | Ram Bhawan Ram Yamuna Prasad Group</title>
+  <meta name="description" content="Build your career with the Ram Bhawan Ram Yamuna Prasad Group — a family-run, multi-sector enterprise in Motihari, Bihar. Explore life with us, our culture, and current openings across jewellery, automobiles, hospitality and education." />
+  <link rel="stylesheet" href="css/style.css?v=24" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <style>
+    .cr-hero { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--navy-mid), var(--navy)); }
+    .cr-hero::after { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at 25% 35%, rgba(196,150,15,0.14) 0%, transparent 60%); }
+
+    .cr-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:20px; }
+    .cr-stat { background:var(--white); border-radius:var(--radius-lg); padding:34px 22px; box-shadow:var(--shadow-sm); text-align:center; border-top:3px solid var(--gold); transition:var(--transition-slow); }
+    .cr-stat:hover { transform:translateY(-6px); box-shadow:var(--shadow-md); }
+    .cr-stat-num { font-family:'Playfair Display',serif; font-size:2.4rem; font-weight:900; color:var(--gold); line-height:1; }
+    .cr-stat-label { font-family:'Outfit',sans-serif; font-size:0.76rem; color:var(--gray-600); text-transform:uppercase; letter-spacing:0.08em; margin-top:10px; }
+
+    .cr-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:20px; }
+    .cr-card { background:var(--white); border-radius:var(--radius-lg); padding:36px 30px; box-shadow:var(--shadow-sm); transition:var(--transition-slow); }
+    .cr-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-md); }
+    .cr-card .cr-ico { display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:14px; background:rgba(196,150,15,0.12); border:1px solid rgba(196,150,15,0.3); margin-bottom:16px; }
+    .cr-card .cr-ico svg { width:26px; height:26px; stroke:var(--gold); }
+    .cr-card h3 { font-size:1.12rem; margin-bottom:10px; }
+    .cr-card p { font-size:0.88rem; color:var(--gray-600); line-height:1.65; }
+
+    /* openings */
+    .cr-jobs { display:flex; flex-direction:column; gap:16px; margin-top:20px; }
+    .cr-job {
+      display:flex; align-items:center; gap:20px; background:var(--white);
+      border-radius:var(--radius-md); padding:24px 28px; box-shadow:var(--shadow-sm);
+      transition:var(--transition-slow); border-left:3px solid var(--gold);
+    }
+    .cr-job:hover { transform:translateX(4px); box-shadow:var(--shadow-md); }
+    .cr-job-ico { font-size:1.8rem; flex-shrink:0; }
+    .cr-job-main { flex:1; }
+    .cr-job-main h4 { font-size:1.02rem; margin-bottom:4px; }
+    .cr-job-meta { font-family:'Outfit',sans-serif; font-size:0.78rem; color:var(--gray-600); }
+    .cr-job-meta span { color:var(--gold); font-weight:600; }
+    .cr-job .btn { flex-shrink:0; }
+    @media (max-width:1024px){ .cr-stats{grid-template-columns:1fr 1fr;} .cr-grid{grid-template-columns:1fr;} }
+    @media (max-width:640px){ .cr-stats{grid-template-columns:1fr;} .cr-job{flex-wrap:wrap;} .cr-job .btn{width:100%;justify-content:center;} }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logos/logo.png" alt="Logo" class="logo-emblem">
+        <div class="logo-text">
+          <span class="logo-name">Ram Bhawan Ram<br>Yamuna Prasad Group</span>
+          <span class="logo-tagline">A Legacy of Trust Since 1956</span>
+        </div>
+      </a>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+        <li class="nav-item">
+          <a href="businesses.html" class="nav-link">Our Businesses
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="dropdown-mega">
+            <div class="dd-col" style="--dc:#7A1F1F">
+              <div class="dd-col-head">
+                <div class="dd-col-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="m12 22 4-13-3-6"/><path d="M12 22 8 9l3-6"/><path d="M2 9h20"/></svg></div>
+                <h6>Jewellery</h6>
+                <div class="dd-col-tag">Timeless elegance, crafted with trust since generations.</div>
+                <span class="dd-underline"></span>
+              </div>
+              <a href="kalyan.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/kalyan_logo.svg" alt="Kalyan" loading="lazy"></div><div class="dd-item-text"><span class="din">Kalyan Jewellers</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="ykj.html" class="dd-item"><div class="dd-item-logo" style="background:#8B1E3F;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">YKJ</div><div class="dd-item-text"><span class="din">YKJ Swarna Sarovar</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="clothing.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/saubhagyamStudio.jpeg" alt="Saubhagyam Studio" loading="lazy"></div><div class="dd-item-text"><span class="din">Saubhagyam Studio</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+            <div class="dd-col" style="--dc:#003B7A">
+              <div class="dd-col-head">
+                <div class="dd-col-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8A3 3 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div>
+                <h6>Automobiles</h6>
+                <div class="dd-col-tag">Driven by performance, powered by trust.</div>
+                <span class="dd-underline"></span>
+              </div>
+              <a href="kia.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/kia_logo.svg" alt="Kia" loading="lazy"></div><div class="dd-item-text"><span class="din">Kia</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="bajaj.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/bajaj_logo.svg" alt="Bajaj" loading="lazy"></div><div class="dd-item-text"><span class="din">Bajaj</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="ktm.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/ktm_logo.svg" alt="KTM" loading="lazy"></div><div class="dd-item-text"><span class="din">KTM</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="triumph.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/triumph_logo.png" alt="Triumph" loading="lazy"></div><div class="dd-item-text"><span class="din">Triumph</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="chetak.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/chetak_logo.jpeg" alt="Chetak" loading="lazy"></div><div class="dd-item-text"><span class="din">Chetak</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+            <div class="dd-col" style="--dc:#2E7D32">
+              <div class="dd-col-head">
+                <div class="dd-col-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
+                <h6>Education</h6>
+                <div class="dd-col-tag">Nurturing future leaders with world-class education.</div>
+                <span class="dd-underline"></span>
+              </div>
+              <a href="gdgoenka.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/gdgoenka_logo.svg" alt="GD Goenka" loading="lazy"></div><div class="dd-item-text"><span class="din">GD Goenka Public School</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="study-oasis.html" class="dd-item"><div class="dd-item-logo" style="background:#2E7D32;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">SO</div><div class="dd-item-text"><span class="din">Study Oasis Hostel</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+            <div class="dd-col" style="--dc:#9C6B30">
+              <div class="dd-col-head">
+                <div class="dd-col-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div>
+                <h6>Hospitality</h6>
+                <div class="dd-col-tag">Hospitality that feels like home.</div>
+                <span class="dd-underline"></span>
+              </div>
+              <a href="rbr-resort.html" class="dd-item"><div class="dd-item-logo"><img src="assets/images/rbr_resort_logo.png" alt="RBR Resort" loading="lazy"></div><div class="dd-item-text"><span class="din">RBR Resort</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="rbr-business-center.html" class="dd-item"><div class="dd-item-logo" style="background:#16294D;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">RBC</div><div class="dd-item-text"><span class="din">RBR Business Center</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              <a href="hotel-atithi.html" class="dd-item"><div class="dd-item-logo" style="background:#7A2E2E;color:#fff;font-family:'Playfair Display',serif;font-weight:800;font-size:0.8rem;">HA</div><div class="dd-item-text"><span class="din">Hotel Atithi</span><span class="dloc">Motihari</span></div><svg class="dd-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+            <div class="dd-promo" style="background-image:linear-gradient(180deg, rgba(11,22,40,0.15), rgba(11,22,40,0.82)), url('assets/images/rbrbussinessCenterHorizontal.png')">
+              <div class="dd-promo-eyebrow">One Group. Many Ventures.</div>
+              <h5>Building a stronger tomorrow, together.</h5>
+              <a href="businesses.html" class="dd-promo-cta">Explore All Businesses <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item"><a href="investors.html" class="nav-link">Partner With Us</a></li>
+        <li class="nav-item"><a href="careers.html" class="nav-link active">Careers</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary nav-cta">Get in Touch</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="about.html" class="mobile-nav-link">About Us</a>
+    <a href="businesses.html" class="mobile-nav-link">Our Businesses</a>
+    <a href="investors.html" class="mobile-nav-link">Partner With Us</a>
+    <a href="careers.html" class="mobile-nav-link">Careers</a>
+    <a href="contact.html" class="mobile-nav-link">Contact</a>
+    <div style="margin-top:32px"><a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Get in Touch</a></div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero cr-hero" aria-label="Careers hero">
+    <div class="container page-hero-content">
+      <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Careers</span></nav>
+      <h1>Build Your Career With Us</h1>
+      <p>Join a family-run group with seven decades of trust. We're always looking for committed, talented people to grow with us across jewellery, automobiles, hospitality and education.</p>
+    </div>
+  </section>
+
+  <!-- WHY JOIN -->
+  <section class="section bg-ivory" aria-label="Why join us">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <div class="section-label">Why Build a Career Here</div>
+        <h2 class="section-title">Grow With a Group That Cares</h2>
+        <span class="gold-divider center"></span>
+      </div>
+      <div class="cr-grid">
+        <div class="cr-card reveal delay-1">
+          <span class="cr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m7 14 4-4 4 4 5-6"/></svg></span>
+          <h3>Real Growth</h3>
+          <p>Across four divisions and more than ten brands, there's always room to learn, take on more, and rise — many of our leaders grew from within.</p>
+        </div>
+        <div class="cr-card reveal delay-2">
+          <span class="cr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <h3>Family Culture</h3>
+          <p>We treat our team like family — with respect, fairness, and genuine care for your wellbeing and your family's.</p>
+        </div>
+        <div class="cr-card reveal delay-3">
+          <span class="cr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
+          <h3>Learn & Train</h3>
+          <p>Work alongside global brands like Kia, KTM, Bajaj and Kalyan Jewellers, with on-the-job training and skill development.</p>
+        </div>
+        <div class="cr-card reveal delay-4">
+          <span class="cr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
+          <h3>Recognition</h3>
+          <p>Hard work is seen and rewarded. We celebrate performance, loyalty, and the people who make our group what it is.</p>
+        </div>
+        <div class="cr-card reveal delay-5">
+          <span class="cr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h3>Stability</h3>
+          <p>A 70-year-old, financially sound, family-owned group offers a secure, dependable place to build a long-term career.</p>
+        </div>
+        <div class="cr-card reveal delay-6">
+          <span class="cr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h.01M9 12h.01M9 15h.01M9 18h.01"/></svg></span>
+          <h3>Community Impact</h3>
+          <p>Be part of a group deeply rooted in Motihari — your work supports education, livelihoods, and the wider community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIFE / VALUES -->
+  <section class="section" style="background: linear-gradient(135deg, var(--navy-mid), var(--navy));" aria-label="Life at the group">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <div class="section-label" style="color:var(--gold-light)">Life at RBRYP</div>
+        <h2 class="section-title" style="color:#fff">More Than a Job</h2>
+        <span class="gold-divider center"></span>
+        <p class="section-desc" style="max-width:640px;margin:12px auto 0;color:rgba(255,255,255,0.7);">We believe that when our people thrive, our businesses thrive. Here, you're not a number — you're part of a legacy in the making.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION FORM -->
+  <section class="section" id="apply" aria-label="Apply now">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Info -->
+        <div class="contact-info-card reveal-left">
+          <h3>Apply Now</h3>
+          <p>Send us your details and our HR team will reach out about suitable openings.</p>
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">📍</div>
+              <div>
+                <div class="contact-detail-label">Corporate Office</div>
+                <div class="contact-detail-value">Main Road, Bajaj Patti,<br>Motihari — 845401, Bihar</div>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">📞</div>
+              <div>
+                <div class="contact-detail-label">HR Desk</div>
+                <div class="contact-detail-value">+91 96610 04200</div>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <div class="contact-detail-icon">✉️</div>
+              <div>
+                <div class="contact-detail-label">Email Your Résumé</div>
+                <div class="contact-detail-value">careers@rbrypgroup.in</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:36px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1)">
+            <p style="font-size:0.82rem;color:rgba(255,255,255,0.55);line-height:1.6;">Prefer email? Send your résumé to <strong style="color:var(--gold-light)">careers@rbrypgroup.in</strong> with the role in the subject line.</p>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="form-card reveal-right">
+          <h3 style="margin-bottom:8px;">Submit Your Application</h3>
+          <p style="font-size:0.88rem;color:var(--gray-600);margin-bottom:32px;">Fill in your details and we'll be in touch about matching opportunities.</p>
+          <form id="careerForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 96610 04200" required />
+              </div>
+              <div class="form-group">
+                <label for="role">Applying For *</label>
+                <select id="role" name="role" required>
+                  <option value="">— Select a Role —</option>
+                  <option>Sales Executive — Jewellery</option>
+                  <option>Service Advisor — Automobiles</option>
+                  <option>Showroom Sales — Two-Wheelers</option>
+                  <option>Event &amp; Banquet Coordinator</option>
+                  <option>Teaching Faculty</option>
+                  <option>Accountant — Group Finance</option>
+                  <option>Other / General Application</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="experience">Years of Experience</label>
+              <select id="experience" name="experience">
+                <option value="">— Select —</option>
+                <option>Fresher (0–1 years)</option>
+                <option>1–3 years</option>
+                <option>3–7 years</option>
+                <option>7+ years</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">About You</label>
+              <textarea id="message" name="message" placeholder="Tell us a little about yourself and why you'd like to join…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center" id="submit-career-form">
+              Submit Application
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="nav-logo" style="margin-bottom:0">
+            <img src="assets/logos/logo.png" alt="Logo" class="logo-emblem">
+            <div class="logo-text">
+              <span class="logo-name">Ram Bhawan Ram<br>Yamuna Prasad Group</span>
+              <span class="logo-tagline">A Legacy of Trust Since 1956</span>
+            </div>
+          </div>
+          <p class="footer-desc">A trusted multi-sector business group since 1956.</p>
+          <div class="social-links">
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-link">f</a><a href="https://www.instagram.com/rbr_group916" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">📸</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="social-link">𝕏</a><a href="https://youtube.com" target="_blank" rel="noopener" class="social-link">▶</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Our Businesses</h5>
+          <ul class="footer-links">
+            <li><a href="ykj.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="m12 22 4-13-3-6"/><path d="M12 22 8 9l3-6"/><path d="M2 9h20"/></svg></span>YKJ Swarna Sarovar</a></li>
+            <li><a href="clothing.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23Z"/></svg></span>Saubhagyam Studio</a></li>
+            <li><a href="kia.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8A3 3 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span>Kia Motors</a></li>
+            <li><a href="bajaj.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg></span>KTM & Bajaj</a></li>
+            <li><a href="rbr-resort.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></span>Hotel & Banquet</a></li>
+            <li><a href="gdgoenka.html"><span class="li-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>GD Goenka School</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="investors.html">Partner With Us</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item"><span>📞</span><span>+91 96610 04200</span></div>
+          <div class="footer-contact-item"><span>✉️</span><span>careers@rbrypgroup.in</span></div>
+          <div class="footer-contact-item"><span>🕐</span><span>Mon–Sat: 10AM – 6PM</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Ram Bhawan Ram Yamuna Prasad Group. All rights reserved.</p>
+        <nav class="footer-legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></nav>
+      </div>
+    </div>
+  </footer>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+  <script src="js/main.js"></script>
+</body>
+</html>
